@@ -2,6 +2,26 @@
 <resources>
 
     <string name="hello">Hello World, MathTestActivity!</string>
-    <string name="app_name">MathTest</string>
+    <string name="app_name">MathTest -a simple math quiz-</string>
+    <string name="Total_Score">Congradulation, you guessed %1$d out of %2$d! for a score of %3$d%</string>
+    <string name="ProblemLabel">Problem %1$d of %2$d</string>
+    
+    <style name="ButtonText">
+	    <item name="android:layout_width">fill_parent</item>
+	    <item name="android:layout_height">wrap_content</item>
+	    <item name="android:textColor">#ffffff</item>
+	    <item name="android:gravity">center</item>
+	    <item name="android:layout_margin">3dp</item>
+	    <item name="android:textSize">20dp</item>
+	    <item name="android:textStyle">bold</item>
+	    <item name="android:shadowColor">#000000</item>
+	    <item name="android:shadowDx">1</item>
+	    <item name="android:shadowDy">1</item>
+	    <item name="android:shadowRadius">2</item>
+    </style>
+    
+    <string name="welcome_msg">Welcome to MathTest, a simply math quiz. The quiz will test your math skills
+        					   in the area of addition. It will simply ask you 5 questions which it will
+        					   grade you and display your score at the end.</string>
 
 </resources>
