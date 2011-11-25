@@ -2,3 +2,10 @@ Welcome to MathTest by Matthew Brown
   Simple Application for me to learn Android Development by creating a simple math quiz application.
   This is stored here so that I can access it where I want either at home or at work when I am using my labtop.
   
+  The math quiz application will quiz the user over basic math skills specifically addition related
+  maybe other skills since this can be done easily as a foundation of learning/developing/deploying an
+  android application.
+  
+  This quiz will ask the user 5 questions which it will be randomally generated each time the application is
+  ran.
+  
