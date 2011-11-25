@@ -2,6 +2,20 @@ package com.barakisbrown;
 
 import java.util.Random;
 
+/**
+ * Quiz is to represent the 'business' login of the MathTest Application
+ * I probably could turn this more into a generic version instead of hardcoding
+ * because all I would need to do is make my array dynamic instead of static like 
+ * they are now present in this class.
+ * 
+ * I also wanted to do a singleton like this so that I can keep my memory low especially
+ * since this will be used inside the android operating system where memory is premium
+ * and something that has to be always considered.
+ * 
+ * @author barakis mailto:barakis@barakisbrown.com
+ * @version 1.0
+ *
+ */
 public class Quiz 
 {
 	private Random rnd = null;
@@ -22,6 +36,12 @@ public class Quiz
 			rnd = new Random();
 	}
 	
+	/**
+	 * If Quiz static object has not been create it then call private constructor which will then
+	 * create the random object generator.  If Quiz object has been created then simply return it
+	 * back to the calling function.
+	 * @return com.barakisbrown.Quiz
+	 */
 	static public Quiz initQuiz()
 	{
 		if (rtnObject == null)
@@ -98,7 +118,4 @@ public class Quiz
 		}
 		quizUsedCount++;
 	}
-	
-	
-	
 }
