@@ -37,6 +37,12 @@ public class Quiz
 	public int getSecond(int index) { return Problems[index][1]; }
 	public int getAnswer(int index) {  return Answers[index]; }
 	
+	/**
+	 * Checks the Answers Array vs the Guess Array at the index to determine if the
+	 * Guess is correct or not
+	 * @param index
+	 * @return true Guess = Answer, false otherwise
+	 */
 	private boolean isCorrect(int index)
 	{
 		if (Answers[index] == Guesses[index])
@@ -45,11 +51,21 @@ public class Quiz
 			return false;
 	}
 	
+	/**
+	 * Sets Guess[index] to answer
+	 * @param Guess answer that the user gave
+	 * @param index int where in the Guess array I want to store this result
+	 */
 	public void setGuess(int Guess,int index)
 	{
 		Guesses[index] = Guess;
 	}
 	
+	/**
+	 * Checks the score based on how well the user did by his guesses compared to the answers
+	 * I might need to change it to a double but for right now i will leave it as an integer
+	 * @return int which is the score determined by the numRight / MAXPROBLEMS
+	 */
 	public int determineScore()
 	{
 		int numRight = 0;
@@ -63,9 +79,12 @@ public class Quiz
 		return numRight / MAXPROBLEMS;
 	}
 	
+	/**
+	 * Loads Problems and Answers Array so that it can be used.
+	 * Note : This function needs to be called after initQuiz 
+	 */
 	public void LoadQuiz()
 	{
-		// Since Quiz() is first initialized, then simply fill in Problems and Answers Array
 		for (int X = 0;X < MAXPROBLEMS; X++)
 		{
 			int first = rnd.nextInt(MAXNUMBERUSED);
