@@ -2,7 +2,11 @@
 <resources>
     
     <string name="app_name">MathTest</string>
-    <string name="Total_Score">Congratulation, you guessed %1$d out of %2$d! for a score of %3$d%</string>
+    <string name="Total_Score">CONGRATULATION:</string>
+    <string name="Total_Score_2">
+    		Problem Total #%1$d\n		Total Correct #%2$d\n
+    		You Scored %3$d!
+    </string>
     <string name="ProblemLabel">Problem %1$d of %2$d</string>
     
     <style name="ButtonText">
