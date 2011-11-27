@@ -12,7 +12,10 @@
         android:layout_width="fill_parent"
         android:layout_height="wrap_content"
         android:text="" />
-
+     <TextView
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content"
+        android:text="" />
       <TextView
           android:layout_width="fill_parent"
           android:layout_height="wrap_content"
@@ -20,15 +23,17 @@
           android:gravity="center"
           android:text="@string/welcome_msg"
           android:textStyle="bold" />
-      
+      <TextView
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content"
+        android:text="" />
        <TextView
         android:layout_width="fill_parent"
         android:layout_height="wrap_content"
         android:text="" />
       
-          
-    <Button android:text="Begin Quiz" android:id="@+id/tstButton" 
-            android:background="@drawable/red_button" 
-            style="@style/ButtonText"/>
+     	<Button android:text="Begin Quiz" android:id="@+id/beginTestButton" 
+                android:background="@drawable/red_button" 
+                style="@style/ButtonText"/>
 
 </LinearLayout>
