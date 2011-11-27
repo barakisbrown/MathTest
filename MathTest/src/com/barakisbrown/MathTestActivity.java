@@ -1,6 +1,7 @@
 package com.barakisbrown;
 
 import android.app.Activity;
+import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
 import android.view.View.OnClickListener;
@@ -22,5 +23,10 @@ public class MathTestActivity extends Activity implements OnClickListener
 	public void onClick(View v) 
 	{
 		Toast.makeText(this,"Not Impelemented Yet",Toast.LENGTH_LONG).show();
+		// this is where I need to call LayoutTestingActivity
+		// Begin Test
+		Intent intent = new Intent(this,LayoutTestingActivity.class);
+		startActivity(intent);
+		// End Test
 	}
 }
