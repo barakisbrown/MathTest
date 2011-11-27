@@ -1,9 +1,8 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
-
-    <string name="hello">Hello World, MathTestActivity!</string>
-    <string name="app_name">MathTest -a simple math quiz-</string>
-    <string name="Total_Score">Congradulation, you guessed %1$d out of %2$d! for a score of %3$d%</string>
+    
+    <string name="app_name">MathTest</string>
+    <string name="Total_Score">Congratulation, you guessed %1$d out of %2$d! for a score of %3$d%</string>
     <string name="ProblemLabel">Problem %1$d of %2$d</string>
     
     <style name="ButtonText">
@@ -20,8 +19,8 @@
 	    <item name="android:shadowRadius">2</item>
     </style>
     
-    <string name="welcome_msg">Welcome to MathTest, a simply math quiz. The quiz will test your math skills
-        					   in the area of addition. It will simply ask you 5 questions which it will
-        					   grade you and display your score at the end.</string>
+    <string name="welcome_msg">This simple quiz will test how well your skills in addition works.
+        					   It will do this by giving you 5 problems for you to figure out. Once your done,
+        					   it will display your score and grade.</string>
 
 </resources>
