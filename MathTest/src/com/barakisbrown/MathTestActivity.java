@@ -25,7 +25,7 @@ public class MathTestActivity extends Activity implements OnClickListener
 		Toast.makeText(this,"Not Impelemented Yet",Toast.LENGTH_LONG).show();
 		// this is where I need to call LayoutTestingActivity
 		// Begin Test
-		Intent intent = new Intent(this,LayoutTestingActivity.class);
+		Intent intent = new Intent(this,TestProblemActivity.class);
 		startActivity(intent);
 		// End Test
 	}
