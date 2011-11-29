@@ -20,7 +20,7 @@ public class Quiz
 {
 	private Random rnd = null;
 	private static Quiz rtnObject = null;
-	private static final int MAXPROBLEMS = 5;
+	private final int MAXPROBLEMS = 5;
 	private static final int MAXNUMBERUSED = 21;
 	
 	private int []Answers = {0,0,0,0,0};
@@ -56,7 +56,7 @@ public class Quiz
 	public int getFirst(int index) { return Problems[index][0]; }
 	public int getSecond(int index) { return Problems[index][1]; }
 	public int getAnswer(int index) {  return Answers[index]; }
-	
+	public int getNumProblems()     { return this.MAXPROBLEMS; }	
 	/**
 	 * Checks the Answers Array vs the Guess Array at the index to determine if the
 	 * Guess is correct or not
