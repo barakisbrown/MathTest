@@ -2,6 +2,7 @@ package com.barakisbrown;
 
 import android.app.Activity;
 import android.os.Bundle;
+import android.util.Log;
 import android.widget.TextView;
 import com.barakisbrown.Quiz;
 
@@ -13,6 +14,7 @@ public class ScoreDisplayActivity extends Activity
 	private int numProblems = 0;
 	public void OnCreate(Bundle savedState)
 	{
+		Log.d("ScoreDisplayActivity","Entering OnCreate()");
 		super.onCreate(savedState);
 		setContentView(R.layout.scoredisplay);
 		
