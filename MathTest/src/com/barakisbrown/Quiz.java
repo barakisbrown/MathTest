@@ -16,16 +16,17 @@ import java.util.Random;
  * @version 1.0
  *
  */
-public class Quiz 
+public class Quiz
 {
 	private Random rnd = null;
 	private static Quiz rtnObject = null;
 	private final int MAXPROBLEMS = 5;
 	private static final int MAXNUMBERUSED = 21;
+	private int numCorrect = 0;
 	
 	private int []Answers = {0,0,0,0,0};
 	private int []Guesses = {0,0,0,0,0};
-	private int [][]Problems = {{0,0,0,0,0},{0,0,0,0,0}};
+	private int[][] Problems;
 	
 	private int quizUsedCount = 0;
 	
@@ -33,9 +34,13 @@ public class Quiz
 	private Quiz()
 	{
 		if (rnd == null)
+		{
 			rnd = new Random();
+			Problems = new int[5][2];
+		}
 	}
 	
+
 	/**
 	 * If Quiz static object has not been create it then call private constructor which will then
 	 * create the random object generator.  If Quiz object has been created then simply return it
@@ -56,7 +61,9 @@ public class Quiz
 	public int getFirst(int index) { return Problems[index][0]; }
 	public int getSecond(int index) { return Problems[index][1]; }
 	public int getAnswer(int index) {  return Answers[index]; }
-	public int getNumProblems()     { return this.MAXPROBLEMS; }	
+	public int getNumProblems()     { return this.MAXPROBLEMS; }
+	public int getNumCorrect()      { return numCorrect; }
+	
 	/**
 	 * Checks the Answers Array vs the Guess Array at the index to determine if the
 	 * Guess is correct or not
@@ -96,6 +103,7 @@ public class Quiz
 				numRight++;
 		}
 		
+		numCorrect = numRight;
 		return numRight / MAXPROBLEMS;
 	}
 	
