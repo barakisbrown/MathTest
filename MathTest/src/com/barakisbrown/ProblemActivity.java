@@ -4,7 +4,9 @@ import java.util.ArrayList;
 import java.util.List;
 
 import android.app.Activity;
+import android.content.Intent;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.View;
 import android.view.View.OnClickListener;
 import android.widget.Button;
@@ -22,17 +24,22 @@ public class ProblemActivity extends Activity implements OnClickListener
 	// remember Quiz has to be access via MathTestActivity.quiz.etc
 	public void OnCreate(Bundle savedState)
 	{
+		Log.d("ProblemActivity","Entering OnCreate()");
 		super.onCreate(savedState);
 		setContentView(R.layout.problem_layout);
 		problemNumber = savedState.getInt("ProblemNumber");
 		MaxProblems = savedState.getInt("MaxNumProblems");
-		LeftSide  = MathTestActivity.quiz.getFirst(problemNumber);
-		RightSide = MathTestActivity.quiz.getSecond(problemNumber);
+		LeftSide = savedState.getInt("LeftSide");
+		RightSide = savedState.getInt("RightSide");
 		Answer = LeftSide + RightSide;
 		
 		final TextView problemBanner = (TextView)findViewById(R.id.problemNumber);
 		String displayStr = problemBanner.getText().toString();
-		displayStr = String.format(displayStr, problemNumber,MaxProblems);
+		if (problemNumber == 0)
+			displayStr = String.format(displayStr, problemNumber + 1,MaxProblems);
+		else
+			displayStr = String.format(displayStr,problemNumber,MaxProblems);
+		// display it to the screen
 		problemBanner.setText(displayStr);
 		
 		displayLayout();
@@ -144,7 +151,13 @@ public class ProblemActivity extends Activity implements OnClickListener
 	{
 		EditText result = (EditText)findViewById(R.id.guessTxtBox);
 		Answer = Integer.parseInt(result.getText().toString());
-		MathTestActivity.quiz.setGuess(Answer, problemNumber);
+		Intent retIntent = new Intent();
+		Bundle retData = new Bundle();
+		retData.putInt("NumProblem", problemNumber);
+		retData.putInt("UserGuess",Answer);
+		retIntent.putExtras(retData);
+		setResult(RESULT_OK,retIntent);
+		finish();
 	}
-
+ 
 }
