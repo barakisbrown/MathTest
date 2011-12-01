@@ -11,17 +11,17 @@
         android:text=""
         android:textAppearance="?android:attr/textAppearanceLarge" />
 	<TextView
-        android:id="@+id/textView2"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:text=""
-        android:textAppearance="?android:attr/textAppearanceLarge" />
-    <TextView
-        android:id="@+id/problemNumber"
+        android:id="@+id/problemLabel"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:text="@string/ProblemLabel"
         android:gravity="center"
+        android:textAppearance="?android:attr/textAppearanceLarge" />
+    <TextView
+        android:id="@+id/textView3"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text=""
         android:textAppearance="?android:attr/textAppearanceLarge" />
 	<TextView
         android:id="@+id/textView4"
@@ -91,8 +91,9 @@
         android:layout_height="wrap_content"
         android:text=""
         android:textAppearance="?android:attr/textAppearanceLarge" />
-	    
+	
 	<Button android:text="Submit Answer" android:id="@+id/SubmitProblem" 
                 android:background="@drawable/red_button" 
-                style="@style/ButtonText"/> 
+                style="@style/ButtonText"/>
+    
 </LinearLayout>
