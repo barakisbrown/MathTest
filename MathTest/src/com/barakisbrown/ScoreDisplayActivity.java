@@ -8,10 +8,10 @@ import com.barakisbrown.Quiz;
 
 public class ScoreDisplayActivity extends Activity 
 {
-	private Quiz quiz = MathTestActivity.quiz;
 	private int totalScore = 0;
 	private int totalCorrect = 0;
 	private int numProblems = 0;
+	
 	public void OnCreate(Bundle savedState)
 	{
 		Log.d("ScoreDisplayActivity","Entering OnCreate()");
@@ -22,9 +22,9 @@ public class ScoreDisplayActivity extends Activity
 		
 		String totalDispStr = totalScoreDisplay.getText().toString();
 		
-		totalScore = quiz.determineScore();
-		totalCorrect = quiz.getNumCorrect();
-		numProblems = quiz.getNumProblems();
+		totalScore = savedState.getInt("Score"); 
+		totalCorrect = savedState.getInt("numCorrect");
+		numProblems = savedState.getInt("NumProblems");
 		totalDispStr = String.format(totalDispStr,numProblems,totalCorrect,totalScore);
 		totalScoreDisplay.setText(totalDispStr);
 	}
