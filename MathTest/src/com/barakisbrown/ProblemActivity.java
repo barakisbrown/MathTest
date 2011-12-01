@@ -6,7 +6,6 @@ import java.util.List;
 import android.app.Activity;
 import android.content.Intent;
 import android.os.Bundle;
-import android.util.Log;
 import android.view.View;
 import android.view.View.OnClickListener;
 import android.widget.Button;
@@ -16,44 +15,43 @@ import android.widget.TextView;
 
 public class ProblemActivity extends Activity implements OnClickListener 
 {
-	private int problemNumber = 0;
-	private int MaxProblems = 0;
-	private int LeftSide = 0;
-	private int RightSide = 0;
-	private int Answer = 0;
-	// remember Quiz has to be access via MathTestActivity.quiz.etc
-	public void OnCreate(Bundle savedState)
+	private int numProblem = 0;
+	private int maxProblem = 0;
+	private int UserGuessed = 0;
+	private int LeftSide;
+	private int RightSide;
+	@Override
+	protected void onCreate(Bundle savedInstanceState) 
 	{
-		Log.d("ProblemActivity","Entering OnCreate()");
-		super.onCreate(savedState);
+		super.onCreate(savedInstanceState);
 		setContentView(R.layout.problem_layout);
-		problemNumber = savedState.getInt("ProblemNumber");
-		MaxProblems = savedState.getInt("MaxNumProblems");
-		LeftSide = savedState.getInt("LeftSide");
-		RightSide = savedState.getInt("RightSide");
-		Answer = LeftSide + RightSide;
 		
-		final TextView problemBanner = (TextView)findViewById(R.id.problemNumber);
-		String displayStr = problemBanner.getText().toString();
-		if (problemNumber == 0)
-			displayStr = String.format(displayStr, problemNumber + 1,MaxProblems);
+		Bundle data = getIntent().getExtras();
+		
+		numProblem = data.getInt("ProblemNumber");
+		maxProblem = data.getInt("MaxNumProblem");
+		LeftSide = data.getInt("LeftSide");
+		RightSide = data.getInt("RightSide");
+		
+		final TextView problem = (TextView)findViewById(R.id.problemLabel);
+		String problemStr = problem.getText().toString();
+		
+		if (numProblem == 0)
+			problemStr = String.format(problemStr,1,maxProblem);
 		else
-			displayStr = String.format(displayStr,problemNumber,MaxProblems);
-		// display it to the screen
-		problemBanner.setText(displayStr);
-		
-		displayLayout();
+			problemStr = String.format(problemStr, numProblem,maxProblem);
+		problem.setText(problemStr);
 		
 		final Button submit = (Button)findViewById(R.id.SubmitProblem);
 		submit.setOnClickListener(this);
 		
-		
+		displayLayout();
 	}
-	
+
 	private void displayLayout()
 	{
-	   displayLeftSide();
-	   displayRightSide();
+	    displayLeftSide();
+	    displayRightSide();
 	}
 
 	  private void displayLeftSide()
@@ -144,20 +142,23 @@ public class ProblemActivity extends Activity implements OnClickListener
 	    }
 
 	    return retList;
-	  }
-
-	
-	public void onClick(View arg0) 
+	}
+	  
+	public void onClick(View v) 
 	{
 		EditText result = (EditText)findViewById(R.id.guessTxtBox);
-		Answer = Integer.parseInt(result.getText().toString());
+		UserGuessed = Integer.parseInt(result.getText().toString());
+		returnData();
+	}
+
+	private void returnData()
+	{
+		Bundle data = new Bundle();
+		data.putInt("ProblemNumber",numProblem);
+		data.putInt("UserGuessed",UserGuessed);
 		Intent retIntent = new Intent();
-		Bundle retData = new Bundle();
-		retData.putInt("NumProblem", problemNumber);
-		retData.putInt("UserGuess",Answer);
-		retIntent.putExtras(retData);
-		setResult(RESULT_OK,retIntent);
+		retIntent.putExtras(data);
+		setResult(Activity.RESULT_OK,retIntent);
 		finish();
 	}
- 
 }
