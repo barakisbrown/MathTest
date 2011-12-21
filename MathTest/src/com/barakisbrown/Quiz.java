@@ -24,8 +24,8 @@ public class Quiz
 	private static final int MAXNUMBERUSED = 21;
 	private int numCorrect = 0;
 	
-	private int []Answers = {0,0,0,0,0};
-	private int []Guesses = {0,0,0,0,0};
+	private int []Answers;
+	private int []Guesses;
 	private int[][] Problems;
 	
 	private int quizUsedCount = 0;
@@ -37,6 +37,8 @@ public class Quiz
 		{
 			rnd = new Random();
 			Problems = new int[5][2];
+			Answers = new int[MAXPROBLEMS];
+			Guesses = new int[MAXPROBLEMS];
 		}
 	}
 	
@@ -63,6 +65,7 @@ public class Quiz
 	public int getAnswer(int index) {  return Answers[index]; }
 	public int getNumProblems()     { return this.MAXPROBLEMS; }
 	public int getNumCorrect()      { return numCorrect; }
+	public double getScore()        { return ((double)numCorrect)/MAXPROBLEMS; }
 	
 	/**
 	 * Checks the Answers Array vs the Guess Array at the index to determine if the
@@ -90,10 +93,10 @@ public class Quiz
 	
 	/**
 	 * Checks the score based on how well the user did by his guesses compared to the answers
-	 * I might need to change it to a double but for right now i will leave it as an integer
-	 * @return int which is the score determined by the numRight / MAXPROBLEMS
+	 * For the caller to get the score he will need to use the getter function <code>double getScore()</code>
+	 * 
 	 */
-	public int determineScore()
+	public void determineScore()
 	{
 		int numRight = 0;
 		
@@ -104,7 +107,6 @@ public class Quiz
 		}
 		
 		numCorrect = numRight;
-		return numRight / MAXPROBLEMS;
 	}
 	
 	/**
