@@ -93,7 +93,6 @@ public class ProblemActivity extends Activity implements OnClickListener
 	{
 		LeftSide = quiz.getFirst(numProblem);
 		RightSide = quiz.getSecond(numProblem);
-		ActualAnswer = LeftSide + RightSide;
 		// update problem label
 		displayString = String.format(problemLabelString, numProblem + 1,maxProblem);
 		problem.setText(displayString);
