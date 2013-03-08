@@ -75,6 +75,10 @@ public class Quiz
 	 */
 	private boolean isCorrect(int index)
 	{
+		if (index < 0 || index > MAXPROBLEMS)
+		{
+			throws new exception("Wrong Index Value");
+		}
 		if (Answers[index] == Guesses[index])
 			return true;
 		else
@@ -88,6 +92,10 @@ public class Quiz
 	 */
 	public void setGuess(int Guess,int index)
 	{
+		if (index < 0 || index > MAXPROBLEMS)
+		{
+			throws new exception("Wrong Index Value");
+		}
 		Guesses[index] = Guess;
 	}
 	
@@ -115,6 +123,11 @@ public class Quiz
 	 */
 	public void LoadQuiz()
 	{
+		if (rnd == null)
+		{
+			// Need to either return an exception stating that Quiz has not be initialized yet
+			throws new exception("Quiz needs to be initiated first");
+		}
 		for (int X = 0;X < MAXPROBLEMS; X++)
 		{
 			int first = rnd.nextInt(MAXNUMBERUSED);
