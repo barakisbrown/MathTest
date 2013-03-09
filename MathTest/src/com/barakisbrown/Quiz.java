@@ -72,12 +72,13 @@ public class Quiz
 	 * Guess is correct or not
 	 * @param index
 	 * @return true Guess = Answer, false otherwise
+	 * @throws Exception 
 	 */
-	private boolean isCorrect(int index)
+	private boolean isCorrect(int index) throws Exception
 	{
 		if (index < 0 || index > MAXPROBLEMS)
 		{
-			throws new exception("Wrong Index Value");
+			throw new Exception("Wrong Index Value");
 		}
 		if (Answers[index] == Guesses[index])
 			return true;
@@ -89,12 +90,13 @@ public class Quiz
 	 * Sets Guess[index] to answer
 	 * @param Guess answer that the user gave
 	 * @param index int where in the Guess array I want to store this result
+	 * @throws Exception 
 	 */
-	public void setGuess(int Guess,int index)
+	public void setGuess(int Guess,int index) throws Exception
 	{
 		if (index < 0 || index > MAXPROBLEMS)
 		{
-			throws new exception("Wrong Index Value");
+			throw new Exception("Wrong Index Value");
 		}
 		Guesses[index] = Guess;
 	}
@@ -110,8 +112,15 @@ public class Quiz
 		
 		for (int index = 0;index < MAXPROBLEMS; index++)
 		{
-			if (isCorrect(index))
-				numRight++;
+			try
+			{
+				if (isCorrect(index))
+					numRight++;
+			}catch(Exception Ex)
+			{
+				System.out.println(Ex.getMessage());
+			}
+			
 		}
 		
 		numCorrect = numRight;
@@ -120,13 +129,14 @@ public class Quiz
 	/**
 	 * Loads Problems and Answers Array so that it can be used.
 	 * Note : This function needs to be called after initQuiz 
+	 * @throws Exception 
 	 */
-	public void LoadQuiz()
+	public void LoadQuiz() throws Exception
 	{
 		if (rnd == null)
 		{
 			// Need to either return an exception stating that Quiz has not be initialized yet
-			throws new exception("Quiz needs to be initiated first");
+			throw new Exception("Quiz needs to be initiated first");
 		}
 		for (int X = 0;X < MAXPROBLEMS; X++)
 		{

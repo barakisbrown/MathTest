@@ -40,7 +40,12 @@ public class ProblemActivity extends Activity implements OnClickListener
 		super.onCreate(savedInstanceState);
 		setContentView(R.layout.problem_layout);
 		// initialize my own varaiables here
-		quiz.LoadQuiz();
+		try {
+			quiz.LoadQuiz();
+		} catch (Exception e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
 		problemLabelString = getResources().getString(R.string.ProblemLabel);
 		display = new ArrayList<Integer>();
 		// initialize form controls
@@ -59,7 +64,12 @@ public class ProblemActivity extends Activity implements OnClickListener
 	{
 		EditText result = (EditText)findViewById(R.id.guessTxtBox);
 		UserGuessed = Integer.parseInt(result.getText().toString());
-		quiz.setGuess(UserGuessed, numProblem);
+		try {
+			quiz.setGuess(UserGuessed, numProblem);
+		} catch (Exception e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
 		
 		if (numProblem < 4)
 		{
