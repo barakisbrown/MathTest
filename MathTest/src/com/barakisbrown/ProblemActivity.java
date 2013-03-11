@@ -17,14 +17,14 @@ import com.barakisbrown.Quiz;
 
 public class ProblemActivity extends Activity implements OnClickListener 
 {
-	private int numProblem = 0;
-	private int maxProblem = 5;
+	private int numProblem = 1;
+	private int maxProblem = 0;
 	private int UserGuessed = 0;
 	private int LeftSide;
 	private int RightSide;
 	private String problemLabelString;
 	private String displayString;
-	private Quiz quiz = Quiz.initQuiz();
+	private Quiz quiz;
 	private List<Integer> display;
 	// Controls Here
 	TextView problem;
@@ -39,8 +39,12 @@ public class ProblemActivity extends Activity implements OnClickListener
 	{
 		super.onCreate(savedInstanceState);
 		setContentView(R.layout.problem_layout);
+		// I need to get the value from the bundle that MathActivity Sent Here
+		maxProblem = getIntent().getIntExtra("Problems",0);
 		// initialize my own varaiables here
-		try {
+		try 
+		{
+			quiz = Quiz.initQuiz(maxProblem);
 			quiz.LoadQuiz();
 		} catch (Exception e) {
 			// TODO Auto-generated catch block
@@ -71,7 +75,7 @@ public class ProblemActivity extends Activity implements OnClickListener
 			e.printStackTrace();
 		}
 		
-		if (numProblem < 4)
+		if (numProblem <= maxProblem)
 		{
 			numProblem++;
 			// clear current problem

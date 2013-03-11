@@ -20,7 +20,7 @@ public class Quiz
 {
 	private Random rnd = null;
 	private static Quiz rtnObject = null;
-	private final int MAXPROBLEMS = 5;
+	private static int MAXPROBLEMS = 0;
 	private static final int MAXNUMBERUSED = 99;
 	private int numCorrect = 0;
 	
@@ -36,7 +36,7 @@ public class Quiz
 		if (rnd == null)
 		{
 			rnd = new Random();
-			Problems = new int[5][2];
+			Problems = new int[MAXPROBLEMS][2];
 			Answers = new int[MAXPROBLEMS];
 			Guesses = new int[MAXPROBLEMS];
 		}
@@ -49,10 +49,11 @@ public class Quiz
 	 * back to the calling function.
 	 * @return com.barakisbrown.Quiz
 	 */
-	static public Quiz initQuiz()
+	static public Quiz initQuiz(int numProblems)
 	{
 		if (rtnObject == null)
 		{
+			MAXPROBLEMS = numProblems;
 			rtnObject = new Quiz();
 			return rtnObject;
 		}
@@ -60,10 +61,10 @@ public class Quiz
 	}
 	
 	public int getQuizNumber()     { return quizUsedCount + 1; }
-	public int getFirst(int index) { return Problems[index][0]; }
-	public int getSecond(int index) { return Problems[index][1]; }
-	public int getAnswer(int index) {  return Answers[index]; }
-	public int getNumProblems()     { return this.MAXPROBLEMS; }
+	public int getFirst(int index) { return Problems[index - 1][0]; }
+	public int getSecond(int index) { return Problems[index - 1][1]; }
+	public int getAnswer(int index) {  return Answers[index - 1]; }
+	public int getNumProblems()     { return Quiz.MAXPROBLEMS; }
 	public int getNumCorrect()      { return numCorrect; }
 	public double getScore()        { return ((double)numCorrect)/MAXPROBLEMS; }
 	
@@ -98,7 +99,7 @@ public class Quiz
 		{
 			throw new Exception("Wrong Index Value");
 		}
-		Guesses[index] = Guess;
+		Guesses[index - 1] = Guess;
 	}
 	
 	/**

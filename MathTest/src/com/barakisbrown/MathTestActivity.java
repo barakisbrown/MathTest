@@ -72,7 +72,6 @@ public class MathTestActivity extends Activity implements OnItemSelectedListener
 			Intent IT = new Intent(this,ProblemActivity.class);
 			IT.putExtra("Problems",position);
 			this.startActivityForResult(IT,SCORE_IT);
-
 		}
 	}
 
