@@ -3,30 +3,33 @@ package com.barakisbrown;
 import android.app.Activity;
 import android.content.Intent;
 import android.os.Bundle;
+import android.util.Log;
+import android.view.Gravity;
 import android.view.View;
-import android.view.View.OnClickListener;
-import android.widget.Button;
+import android.widget.AdapterView;
+import android.widget.AdapterView.OnItemSelectedListener;
+import android.widget.ArrayAdapter;
+import android.widget.Spinner;
 
-public class MathTestActivity extends Activity implements OnClickListener 
+public class MathTestActivity extends Activity implements OnItemSelectedListener
 {
 	private static final int SCORE_IT = 1000;
+	private ArrayAdapter<String> adapter;
 	/** Called when the activity is first created. */
     @Override
     public void onCreate(Bundle savedInstanceState) 
     {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.main);
-        final Button beginButton = (Button)findViewById(R.id.beginTestButton);
-        beginButton.setOnClickListener(this);
+        Spinner choices = (Spinner)findViewById(R.id.choices);
+        adapter = new ArrayAdapter<String>(this,android.R.layout.simple_spinner_item,getResources().getStringArray(R.array.number_of_problems));
+        adapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
+        choices.setAdapter(adapter);
+        choices.setGravity(Gravity.CENTER);
+        choices.setOnItemSelectedListener((OnItemSelectedListener) this);
     }
-
-	public void onClick(View v) 
-	{
-		Intent IT = new Intent(this,ProblemActivity.class);
-		this.startActivityForResult(IT,SCORE_IT);
-	}
-
-	@Override
+    
+   	@Override
 	protected void onActivityResult(int requestCode, int resultCode, Intent data) 
 	{
 		super.onActivityResult(requestCode, resultCode, data);
@@ -53,7 +56,28 @@ public class MathTestActivity extends Activity implements OnClickListener
 		default:
 			break;
 		}
-	}	
+	}
+
+
+	public void onItemSelected(AdapterView<?> arg0, View arg1, int position,long arg3) 
+	{
+		Log.d("OnItemSelected Function","position = " + position);
+		
+		if (position == 0)
+		{
+			return;
+		}
+		else
+		{
+			Intent IT = new Intent(this,ProblemActivity.class);
+			IT.putExtra("Problems",position);
+			this.startActivityForResult(IT,SCORE_IT);
+
+		}
+	}
+
+
+	public void onNothingSelected(AdapterView<?> arg0){ }	
 	
 	
 }

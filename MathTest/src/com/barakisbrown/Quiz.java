@@ -21,7 +21,7 @@ public class Quiz
 	private Random rnd = null;
 	private static Quiz rtnObject = null;
 	private final int MAXPROBLEMS = 5;
-	private static final int MAXNUMBERUSED = 21;
+	private static final int MAXNUMBERUSED = 99;
 	private int numCorrect = 0;
 	
 	private int []Answers;

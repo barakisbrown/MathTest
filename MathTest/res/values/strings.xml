@@ -15,7 +15,7 @@
 	    <item name="android:textColor">#ffffff</item>
 	    <item name="android:gravity">center</item>
 	    <item name="android:layout_margin">3dp</item>
-	    <item name="android:textSize">20dp</item>
+	    <item name="android:textSize">20sp</item>
 	    <item name="android:textStyle">bold</item>
 	    <item name="android:shadowColor">#000000</item>
 	    <item name="android:shadowDx">1</item>
@@ -23,8 +23,22 @@
 	    <item name="android:shadowRadius">2</item>
     </style>
     
-    <string name="welcome_msg">This simple quiz will test how well your skills in addition works.
-        					   It will do this by giving you 5 problems for you to figure out. Once your done,
-        					   it will display your score and grade.</string>
+    <string name="welcome_msg">This simple quiz will test your math skills.\nPlease select how many of problems(Max of 10)\nOnce the quiz is done, it will display your score and grade.</string>
+    
+    <string name="begin_quiz">Begin Quiz</string>
+    <string name="choice_prompt">Please Select Number of Problems</string>
 
+    <string-array name="number_of_problems">
+        <item>None Selected</item>
+        <item>One</item>
+        <item>Two</item>
+        <item>Three</item>
+        <item>Four</item>
+        <item>Five</item>
+        <item>Six</item>
+        <item>Seven</item>
+        <item>Eight</item>
+        <item>Nine</item>
+        <item>Ten</item>
+    </string-array>
 </resources>
