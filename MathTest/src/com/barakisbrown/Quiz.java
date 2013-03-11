@@ -28,7 +28,7 @@ public class Quiz
 	private int []Guesses;
 	private int[][] Problems;
 	
-	private int quizUsedCount = 0;
+	private int quizUsedCount = 1;
 	
 
 	private Quiz()
@@ -60,10 +60,10 @@ public class Quiz
 		return rtnObject;
 	}
 	
-	public int getQuizNumber()     { return quizUsedCount + 1; }
-	public int getFirst(int index) { return Problems[index - 1][0]; }
-	public int getSecond(int index) { return Problems[index - 1][1]; }
-	public int getAnswer(int index) {  return Answers[index - 1]; }
+	public int getQuizNumber()     { return quizUsedCount; }
+	public int getFirst(int index) { return Problems[index][0]; }
+	public int getSecond(int index) { return Problems[index][1]; }
+	public int getAnswer(int index) {  return Answers[index]; }
 	public int getNumProblems()     { return Quiz.MAXPROBLEMS; }
 	public int getNumCorrect()      { return numCorrect; }
 	public double getScore()        { return ((double)numCorrect)/MAXPROBLEMS; }
@@ -99,7 +99,7 @@ public class Quiz
 		{
 			throw new Exception("Wrong Index Value");
 		}
-		Guesses[index - 1] = Guess;
+		Guesses[index] = Guess;
 	}
 	
 	/**
@@ -139,6 +139,7 @@ public class Quiz
 			// Need to either return an exception stating that Quiz has not be initialized yet
 			throw new Exception("Quiz needs to be initiated first");
 		}
+		// since rnd does exist then I will need to create the loop that makes the quiz
 		for (int X = 0;X < MAXPROBLEMS; X++)
 		{
 			int first = rnd.nextInt(MAXNUMBERUSED);

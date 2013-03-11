@@ -41,7 +41,8 @@ public class ProblemActivity extends Activity implements OnClickListener
 		setContentView(R.layout.problem_layout);
 		// I need to get the value from the bundle that MathActivity Sent Here
 		maxProblem = getIntent().getIntExtra("Problems",0);
-		// initialize my own varaiables here
+		Log.d("ProblemActivity","Problems = " + maxProblem);
+		// initialize my own variables here
 		try 
 		{
 			quiz = Quiz.initQuiz(maxProblem);
@@ -75,7 +76,7 @@ public class ProblemActivity extends Activity implements OnClickListener
 			e.printStackTrace();
 		}
 		
-		if (numProblem <= maxProblem)
+		if (numProblem  < maxProblem)
 		{
 			numProblem++;
 			// clear current problem
@@ -97,10 +98,6 @@ public class ProblemActivity extends Activity implements OnClickListener
 			this.setResult(RESULT_OK, data);
 			finish();
 		}
-		
-		
-		
-		
 	}
 
 	private void displayLayout()
@@ -108,16 +105,16 @@ public class ProblemActivity extends Activity implements OnClickListener
 		LeftSide = quiz.getFirst(numProblem);
 		RightSide = quiz.getSecond(numProblem);
 		// update problem label
-		displayString = String.format(problemLabelString, numProblem + 1,maxProblem);
+		displayString = String.format(problemLabelString, numProblem,maxProblem);
 		problem.setText(displayString);
 		// display numbers
-	    displayLeftSide();
-	    displayRightSide();
+	    displayLeftSide(LeftSide);
+	    displayRightSide(RightSide);
 	}
 
-	  private void displayLeftSide()
+	  private void displayLeftSide(int lside)
 	  {  
-	    getDisplay(LeftSide);
+	    getDisplay(lside);
 	    if (display.size() == 1)
 	    {
 	      int resID = display.remove(0);
@@ -130,11 +127,12 @@ public class ProblemActivity extends Activity implements OnClickListener
 	      firstLeft.setImageResource(resID_1);
 	      secondLeft.setImageResource(resID_2);
 	    }
+	    display.clear();
 	  }
 
-	  private void displayRightSide()
+	  private void displayRightSide(int rside)
 	  {
-	    getDisplay(RightSide);
+	    getDisplay(rside);
 	    if (display.size() == 1)
 	    {
 	      int resID = display.remove(0);
@@ -147,6 +145,7 @@ public class ProblemActivity extends Activity implements OnClickListener
 	      firstRight.setImageResource(resID_1);
 	      secondRight.setImageResource(resID_2);
 	    }
+	    display.clear();
 	  }
 
 	  private void getDisplay(int Number)
