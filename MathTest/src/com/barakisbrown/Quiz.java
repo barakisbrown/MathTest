@@ -12,6 +12,10 @@ import java.util.Random;
  * since this will be used inside the android operating system where memory is premium
  * and something that has to be always considered.
  * 
+ * 3/12/13 Modification
+ * I am changing this class so that it can make different amount of problems ranging from
+ * 1 to 10. If done right, theoretically it can handle anything the user sends to it.
+ * 
  * @author barakis mailto:barakis@barakisbrown.com
  * @version 1.0
  *
@@ -20,7 +24,7 @@ public class Quiz
 {
 	private Random rnd = null;
 	private static Quiz rtnObject = null;
-	private static int MAXPROBLEMS = 5;
+	private static int MAXPROBLEMS = 0;
 	private static final int MAXNUMBERUSED = 99;
 	private int numCorrect = 0;
 	
@@ -28,13 +32,15 @@ public class Quiz
 	private int []Guesses;
 	private int[][] Problems;
 	
-	private int quizUsedCount = 1;
 	
+	private int quizUsedCount = 1;
+	private double score = 0;
 
-	private Quiz()
+	private Quiz(int problems)
 	{
 		if (rnd == null)
 		{
+			MAXPROBLEMS = problems;
 			rnd = new Random();
 			Problems = new int[MAXPROBLEMS][2];
 			Answers = new int[MAXPROBLEMS];
@@ -48,12 +54,13 @@ public class Quiz
 	 * create the random object generator.  If Quiz object has been created then simply return it
 	 * back to the calling function.
 	 * @return com.barakisbrown.Quiz
+	 * @param problems -- the number of problems for the quiz to generate.
 	 */
-	static public Quiz initQuiz()
+	static public Quiz initQuiz(int problems)
 	{
 		if (rtnObject == null)
 		{
-			rtnObject = new Quiz();
+			rtnObject = new Quiz(problems);
 			return rtnObject;
 		}
 		return rtnObject;
@@ -63,12 +70,12 @@ public class Quiz
 	public int getFirst(int index) { return Problems[index][0]; }
 	public int getSecond(int index) { return Problems[index][1]; }
 	public int getAnswer(int index) {  return Answers[index]; }
-	public int getNumProblems()     { return Quiz.MAXPROBLEMS; }
+	public int getNumProblems()     { return MAXPROBLEMS; }
 	public int getNumCorrect()      { return numCorrect; }
-	public double getScore()        { return ((double)numCorrect)/MAXPROBLEMS; }
+	public double getScore()        { return score; }
 	
 	/**
-	 * Checks the Answers Array vs the Guess Array at the index to determine if the
+	 * Checks the Answers Array versus the Guess Array at the index to determine if the
 	 * Guess is correct or not
 	 * @param index
 	 * @return true Guess = Answer, false otherwise
@@ -93,7 +100,7 @@ public class Quiz
 	/**
 	 * Sets Guess[index] to answer
 	 * @param Guess answer that the user gave
-	 * @param index int where in the Guess array I want to store this result
+	 * @param index where in the Guess array I want to store this result
 	 * @throws Exception 
 	 */
 	public void setGuess(int Guess,int index) throws Exception
@@ -129,6 +136,7 @@ public class Quiz
 		}
 		
 		numCorrect = numRight;
+		score = (double)numCorrect / MAXPROBLEMS;
 	}
 	
 	/**
