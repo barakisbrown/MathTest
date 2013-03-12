@@ -42,7 +42,7 @@ public class ProblemActivity extends Activity implements OnClickListener
 		// initialize my own variables here
 		try 
 		{
-			quiz = Quiz.initQuiz();
+			quiz = Quiz.initQuiz(0);
 			quiz.LoadQuiz();
 			
 		} catch (Exception e) 
