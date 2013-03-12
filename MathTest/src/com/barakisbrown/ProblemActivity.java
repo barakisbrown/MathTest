@@ -6,7 +6,6 @@ import java.util.List;
 import android.app.Activity;
 import android.content.Intent;
 import android.os.Bundle;
-import android.util.Log;
 import android.view.View;
 import android.view.View.OnClickListener;
 import android.widget.Button;
@@ -17,8 +16,8 @@ import com.barakisbrown.Quiz;
 
 public class ProblemActivity extends Activity implements OnClickListener 
 {
-	private int numProblem = 1;
-	private int maxProblem = 0;
+	private int numProblem = 0;
+	private int maxProblem = 5;
 	private int UserGuessed = 0;
 	private int LeftSide;
 	private int RightSide;
@@ -40,17 +39,18 @@ public class ProblemActivity extends Activity implements OnClickListener
 		super.onCreate(savedInstanceState);
 		setContentView(R.layout.problem_layout);
 		// I need to get the value from the bundle that MathActivity Sent Here
-		maxProblem = getIntent().getIntExtra("Problems",0);
-		Log.d("ProblemActivity","Problems = " + maxProblem);
 		// initialize my own variables here
 		try 
 		{
-			quiz = Quiz.initQuiz(maxProblem);
+			quiz = Quiz.initQuiz();
 			quiz.LoadQuiz();
-		} catch (Exception e) {
+			
+		} catch (Exception e) 
+		{
 			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
+		
 		problemLabelString = getResources().getString(R.string.ProblemLabel);
 		display = new ArrayList<Integer>();
 		// initialize form controls
@@ -76,7 +76,7 @@ public class ProblemActivity extends Activity implements OnClickListener
 			e.printStackTrace();
 		}
 		
-		if (numProblem  < maxProblem)
+		if (numProblem  < 4)
 		{
 			numProblem++;
 			// clear current problem
@@ -105,7 +105,7 @@ public class ProblemActivity extends Activity implements OnClickListener
 		LeftSide = quiz.getFirst(numProblem);
 		RightSide = quiz.getSecond(numProblem);
 		// update problem label
-		displayString = String.format(problemLabelString, numProblem,maxProblem);
+		displayString = String.format(problemLabelString, numProblem + 1,maxProblem);
 		problem.setText(displayString);
 		// display numbers
 	    displayLeftSide(LeftSide);
@@ -114,38 +114,38 @@ public class ProblemActivity extends Activity implements OnClickListener
 
 	  private void displayLeftSide(int lside)
 	  {  
-	    getDisplay(lside);
-	    if (display.size() == 1)
-	    {
-	      int resID = display.remove(0);
-	      firstLeft.setImageResource(resID);
-	    }
-	    else
-	    {
-	      int resID_1 = display.remove(0);
-	      int resID_2 = display.remove(0);
-	      firstLeft.setImageResource(resID_1);
-	      secondLeft.setImageResource(resID_2);
-	    }
-	    display.clear();
+		  getDisplay(lside);
+		  if (display.size() == 1)
+		  {
+		     int resID = display.remove(0);
+		     firstLeft.setImageResource(resID);
+		  }
+		  else
+		  {
+		     int resID_1 = display.remove(0);
+		     int resID_2 = display.remove(0);
+		     firstLeft.setImageResource(resID_1);
+		     secondLeft.setImageResource(resID_2);
+		  }
+		  display.clear();
 	  }
 
 	  private void displayRightSide(int rside)
 	  {
-	    getDisplay(rside);
-	    if (display.size() == 1)
-	    {
-	      int resID = display.remove(0);
-	      firstRight.setImageResource(resID);
-	    }
-	    else
-	    {
-	      int resID_1 = display.remove(0);
-	      int resID_2 = display.remove(0);
-	      firstRight.setImageResource(resID_1);
-	      secondRight.setImageResource(resID_2);
-	    }
-	    display.clear();
+		  getDisplay(rside);
+		  if (display.size() == 1)
+		  {
+			  int resID = display.remove(0);
+			  firstRight.setImageResource(resID);
+		  }
+		  else
+		  {
+			  int resID_1 = display.remove(0);
+			  int resID_2 = display.remove(0);
+			  firstRight.setImageResource(resID_1);
+			  secondRight.setImageResource(resID_2);
+		  }
+		  display.clear();
 	  }
 
 	  private void getDisplay(int Number)

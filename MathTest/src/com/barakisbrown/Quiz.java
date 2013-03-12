@@ -4,7 +4,7 @@ import java.util.Random;
 
 /**
  * Quiz is to represent the 'business' login of the MathTest Application
- * I probably could turn this more into a generic version instead of hardcoding
+ * I probably could turn this more into a generic version instead of hard coding
  * because all I would need to do is make my array dynamic instead of static like 
  * they are now present in this class.
  * 
@@ -20,7 +20,7 @@ public class Quiz
 {
 	private Random rnd = null;
 	private static Quiz rtnObject = null;
-	private static int MAXPROBLEMS = 0;
+	private static int MAXPROBLEMS = 5;
 	private static final int MAXNUMBERUSED = 99;
 	private int numCorrect = 0;
 	
@@ -49,11 +49,10 @@ public class Quiz
 	 * back to the calling function.
 	 * @return com.barakisbrown.Quiz
 	 */
-	static public Quiz initQuiz(int numProblems)
+	static public Quiz initQuiz()
 	{
 		if (rtnObject == null)
 		{
-			MAXPROBLEMS = numProblems;
 			rtnObject = new Quiz();
 			return rtnObject;
 		}
@@ -81,10 +80,14 @@ public class Quiz
 		{
 			throw new Exception("Wrong Index Value");
 		}
-		if (Answers[index] == Guesses[index])
-			return true;
 		else
-			return false;
+		{
+			if (Answers[index] == Guesses[index])
+				return true;
+			else
+				return false;
+		}
+		
 	}
 	
 	/**
@@ -99,7 +102,8 @@ public class Quiz
 		{
 			throw new Exception("Wrong Index Value");
 		}
-		Guesses[index] = Guess;
+		else
+			Guesses[index] = Guess;
 	}
 	
 	/**
@@ -139,7 +143,7 @@ public class Quiz
 			// Need to either return an exception stating that Quiz has not be initialized yet
 			throw new Exception("Quiz needs to be initiated first");
 		}
-		// since rnd does exist then I will need to create the loop that makes the quiz
+		// since rnd exists then I will need to create the loop that makes the quiz
 		for (int X = 0;X < MAXPROBLEMS; X++)
 		{
 			int first = rnd.nextInt(MAXNUMBERUSED);

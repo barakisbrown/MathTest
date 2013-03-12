@@ -3,30 +3,23 @@ package com.barakisbrown;
 import android.app.Activity;
 import android.content.Intent;
 import android.os.Bundle;
-import android.util.Log;
-import android.view.Gravity;
 import android.view.View;
-import android.widget.AdapterView;
-import android.widget.AdapterView.OnItemSelectedListener;
-import android.widget.ArrayAdapter;
-import android.widget.Spinner;
+import android.view.View.OnClickListener;
+import android.widget.Button;
 
-public class MathTestActivity extends Activity implements OnItemSelectedListener
+public class MathTestActivity extends Activity implements OnClickListener
 {
 	private static final int SCORE_IT = 1000;
-	private ArrayAdapter<String> adapter;
+	
 	/** Called when the activity is first created. */
     @Override
     public void onCreate(Bundle savedInstanceState) 
     {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.main);
-        Spinner choices = (Spinner)findViewById(R.id.choices);
-        adapter = new ArrayAdapter<String>(this,android.R.layout.simple_spinner_item,getResources().getStringArray(R.array.number_of_problems));
-        adapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
-        choices.setAdapter(adapter);
-        choices.setGravity(Gravity.CENTER);
-        choices.setOnItemSelectedListener((OnItemSelectedListener) this);
+        final Button begin = (Button)findViewById(R.id.StartQuiz);
+        begin.setOnClickListener(this);
+     
     }
     
    	@Override
@@ -43,7 +36,7 @@ public class MathTestActivity extends Activity implements OnItemSelectedListener
 				double score = data.getDoubleExtra("Score", 0.0);
 				int correct = data.getIntExtra("Correct",0);
 				int numProblem = data.getIntExtra("NumProblems",0);
-				// now lets call the scoredisplayactivity
+				// now lets call the Activity ScoreDisplayActivity
 				Intent scoreIT = new Intent(this,ScoreDisplayActivity.class);
 	
 				scoreIT.putExtra("Score",score);
@@ -59,24 +52,13 @@ public class MathTestActivity extends Activity implements OnItemSelectedListener
 	}
 
 
-	public void onItemSelected(AdapterView<?> arg0, View arg1, int position,long arg3) 
+
+	public void onClick(View arg0) 
 	{
-		Log.d("OnItemSelected Function","position = " + position);
+		Intent IT = new Intent(this,ProblemActivity.class);
+		this.startActivityForResult(IT,SCORE_IT);
 		
-		if (position == 0)
-		{
-			return;
-		}
-		else
-		{
-			Intent IT = new Intent(this,ProblemActivity.class);
-			IT.putExtra("Problems",position);
-			this.startActivityForResult(IT,SCORE_IT);
-		}
-	}
-
-
-	public void onNothingSelected(AdapterView<?> arg0){ }	
+	}	
 	
 	
 }
