@@ -60,8 +60,14 @@ public class Quiz
 	{
 		if (rtnObject == null)
 		{
-			rtnObject = new Quiz(problems);
-			return rtnObject;
+			if (problems < 1)
+				return null;
+			else
+			{
+				rtnObject = new Quiz(problems);
+				return rtnObject;
+			}
+			
 		}
 		return rtnObject;
 	}
