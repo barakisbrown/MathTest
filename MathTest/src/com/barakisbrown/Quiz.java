@@ -12,11 +12,10 @@ import java.util.Random;
  * since this will be used inside the android operating system where memory is premium
  * and something that has to be always considered.
  * 
- * 3/12/13 Modification
- * I am changing this class so that it can make different amount of problems ranging from
- * 1 to 10. If done right, theoretically it can handle anything the user sends to it.
- * 
  * @author barakis mailto:barakis@barakisbrown.com
+ * 
+ * This is the master file. I am changing it so that I can it is no longer hard coded
+ * but I am still leaving it at 5 problems
  * @version 1.0
  *
  */

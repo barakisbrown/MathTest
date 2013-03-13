@@ -6,6 +6,11 @@ import android.util.Log;
 import android.widget.TextView;
 import com.barakisbrown.Quiz;
 
+/***
+ * This is the master ScoreDisplayActivity Class.
+ * @author Matt
+ *
+ */
 public class ScoreDisplayActivity extends Activity 
 {
 	private double totalScore = 0;

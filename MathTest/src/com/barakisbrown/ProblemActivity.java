@@ -14,6 +14,12 @@ import android.widget.ImageView;
 import android.widget.TextView;
 import com.barakisbrown.Quiz;
 
+/***
+ * This is the master ProblemActivity Class. Hard coded where it will only take 5 problems
+ * and the launch screen will have a button instead of using a spinner or something else.
+ * @author Matt
+ *
+ */
 public class ProblemActivity extends Activity implements OnClickListener 
 {
 	private int numProblem = 0;
@@ -42,7 +48,7 @@ public class ProblemActivity extends Activity implements OnClickListener
 		// initialize my own variables here
 		try 
 		{
-			quiz = Quiz.initQuiz(0);
+			quiz = Quiz.initQuiz(5);
 			quiz.LoadQuiz();
 			
 		} catch (Exception e) 

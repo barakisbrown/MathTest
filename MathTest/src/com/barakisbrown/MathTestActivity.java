@@ -7,6 +7,11 @@ import android.view.View;
 import android.view.View.OnClickListener;
 import android.widget.Button;
 
+/***
+ * This is the master MathTestActivity Class.
+ * @author Matt
+ *
+ */
 public class MathTestActivity extends Activity implements OnClickListener
 {
 	private static final int SCORE_IT = 1000;
