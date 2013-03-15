@@ -6,6 +6,7 @@ import java.util.List;
 import android.app.Activity;
 import android.content.Intent;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.View;
 import android.view.View.OnClickListener;
 import android.widget.Button;
@@ -17,7 +18,7 @@ import com.barakisbrown.Quiz;
 public class ProblemActivity extends Activity implements OnClickListener 
 {
 	private int numProblem = 0;
-	private int maxProblem = 5;
+	private int maxProblem = 0;
 	private int UserGuessed = 0;
 	private int LeftSide;
 	private int RightSide;
@@ -40,9 +41,12 @@ public class ProblemActivity extends Activity implements OnClickListener
 		setContentView(R.layout.problem_layout);
 		// I need to get the value from the bundle that MathActivity Sent Here
 		// initialize my own variables here
+		maxProblem = getIntent().getIntExtra("Problems",0);
+		Log.d("ProblemActivity onCreate()","Problems = " + maxProblem);
 		try 
 		{
-			quiz = Quiz.initQuiz();
+			Log.d("ProblemActivity","Quiz Has been initialized with " + maxProblem + " elements");
+			quiz = Quiz.initQuiz(maxProblem);
 			quiz.LoadQuiz();
 			
 		} catch (Exception e) 
@@ -67,6 +71,10 @@ public class ProblemActivity extends Activity implements OnClickListener
 	
 	public void onClick(View v) 
 	{
+		// Debug Code Here
+		Log.d("ProblemActivity onClick()","numProblem = " + numProblem);
+		Log.d("ProblemActivity onClick()","maxProblem = " + maxProblem);
+		// End Debug Code
 		EditText result = (EditText)findViewById(R.id.guessTxtBox);
 		UserGuessed = Integer.parseInt(result.getText().toString());
 		try {
@@ -102,6 +110,10 @@ public class ProblemActivity extends Activity implements OnClickListener
 
 	private void displayLayout()
 	{
+		// Debug Code Here
+		Log.d("ProblemActivity displayLayout()","numProblem = " + numProblem);
+		Log.d("ProblemActivity displayLayout()","maxProblem = " + maxProblem);
+		// End Debug Code
 		LeftSide = quiz.getFirst(numProblem);
 		RightSide = quiz.getSecond(numProblem);
 		// update problem label
