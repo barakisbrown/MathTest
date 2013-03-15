@@ -42,10 +42,12 @@ public class ProblemActivity extends Activity implements OnClickListener
 		// I need to get the value from the bundle that MathActivity Sent Here
 		// initialize my own variables here
 		maxProblem = getIntent().getIntExtra("Problems",0);
+		// DEBUG BEGIN
+		Log.d("ProblemActivity","Quiz Has been initialized with " + maxProblem + " elements");
 		Log.d("ProblemActivity onCreate()","Problems = " + maxProblem);
+		// DEBUG END
 		try 
 		{
-			Log.d("ProblemActivity","Quiz Has been initialized with " + maxProblem + " elements");
 			quiz = Quiz.initQuiz(maxProblem);
 			quiz.LoadQuiz();
 			
