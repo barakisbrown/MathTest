@@ -30,10 +30,11 @@
           android:layout_width="fill_parent"
           android:layout_height="wrap_content" />
 
-	  <Button android:id="@+id/StartQuiz"
-        	  android:background="@drawable/red_button"
-        	  android:text="@string/begin_quiz"
-              style="@style/ButtonText"/>      
+	  <Spinner
+          android:id="@+id/choices"
+          android:layout_width="match_parent"
+          android:layout_height="wrap_content"
+          android:prompt="@string/choice_prompt"/>
        
        <TextView
         android:layout_width="fill_parent"
