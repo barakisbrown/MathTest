@@ -4,7 +4,6 @@ import android.app.Activity;
 import android.os.Bundle;
 import android.util.Log;
 import android.widget.TextView;
-import com.barakisbrown.Quiz;
 
 public class ScoreDisplayActivity extends Activity 
 {
