@@ -1,7 +1,7 @@
 package com.barakisbrown;
 
 import java.util.Random;
-
+import android.util.Log;
 /**
  * Quiz is to represent the 'business' login of the MathTest Application
  * I probably could turn this more into a generic version instead of hard coding
@@ -24,7 +24,7 @@ public class Quiz
 {
 	private Random rnd = null;
 	private static Quiz rtnObject = null;
-	private static int MAXPROBLEMS = 0;
+	private int MAXPROBLEMS = 0;
 	private static final int MAXNUMBERUSED = 99;
 	private int numCorrect = 0;
 	private int quizUsedCount = 1;
@@ -45,12 +45,17 @@ public class Quiz
 	{
 		if (rnd == null)
 		{
-			MAXPROBLEMS = numProblems;
 			rnd = new Random();
-			Problems = new int[MAXPROBLEMS][2];
-			Answers = new int[MAXPROBLEMS];
-			Guesses = new int[MAXPROBLEMS];
+			initVars(numProblems);
 		}
+	}
+	
+	private void initVars(int numProblems)
+	{
+		MAXPROBLEMS = numProblems;
+		Problems = new int[MAXPROBLEMS][2];
+		Answers = new int[MAXPROBLEMS];
+		Guesses = new int[MAXPROBLEMS];
 	}
 	
 
@@ -64,24 +69,37 @@ public class Quiz
 	 */
 	static public Quiz initQuiz(int numProblems)
 	{
+		if (numProblems < 1)
+			numProblems = 1;
+		else if (numProblems > 10)
+			numProblems = 10;
 		if (rtnObject == null)
 		{
-			if (numProblems < 1)
-				numProblems = 1;
-			else if (numProblems > 10)
-				numProblems = 10;
 			rtnObject = new Quiz(numProblems);
 			return rtnObject;
 		}
-		return rtnObject;
+		else
+		{
+			rtnObject = null;
+			rtnObject = new Quiz(numProblems);
+			return rtnObject;
+		}
 	}
 	
+
 	// I could do some type checking below in this set of getters. Might look into it later.
 	public int getQuizNumber()     { return quizUsedCount; }
-	public int getFirst(int index) { return Problems[index][0]; }
+	public int getFirst(int index) 
+	{
+		// BEGIN DEBUG
+		Log.d("Quiz getFirst()","Index = " + index);
+		Log.d("Quiz getFirst()","MAXPROBLEMS = " + MAXPROBLEMS);
+		// END DEBUG
+		return Problems[index][0]; 
+	}
 	public int getSecond(int index) { return Problems[index][1]; }
 	public int getAnswer(int index) {  return Answers[index]; }
-	public int getNumProblems()     { return Quiz.MAXPROBLEMS; }
+	public int getNumProblems()     { return MAXPROBLEMS; }
 	public int getNumCorrect()      { return numCorrect; }
 	public double getScore()        { return score; }
 	
