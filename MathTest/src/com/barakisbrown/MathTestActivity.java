@@ -11,13 +11,23 @@ import android.widget.AdapterView.OnItemSelectedListener;
 import android.widget.ArrayAdapter;
 import android.widget.Spinner;
 
+/***
+ * I have modified this from the original where I will use a spinner instead of button. The reason is that when I used
+ * a button it was hard coded number of problems but now I want to make it where I can chose how many problems.
+ * 
+ * @author barakis
+ *
+ */
 public class MathTestActivity extends Activity
 {
 	private static final int SCORE_IT = 1000;
 	private ArrayAdapter<String> adapter;
 	private Spinner choices;
 	
-	/** Called when the activity is first created. */
+	/***
+	 * This will initialize the whole program since this is the launching point.
+	 * @return savedInstanceState -- allows you to pass information between activities.
+	 */
     @Override
     public void onCreate(Bundle savedInstanceState) 
     {
@@ -32,6 +42,11 @@ public class MathTestActivity extends Activity
      
     }
     
+    /***
+     * When this called back, once ProblemActivity is finished, it will then send information
+     * to ScoreDisplayActivity to display it to the screen.
+     * 
+     */
    	@Override
 	protected void onActivityResult(int requestCode, int resultCode, Intent data) 
 	{
@@ -48,7 +63,7 @@ public class MathTestActivity extends Activity
 				int numProblem = data.getIntExtra("NumProblems",0);
 				// now lets call the Activity ScoreDisplayActivity
 				Intent scoreIT = new Intent(this,ScoreDisplayActivity.class);
-	
+				// store information which ScoreDisplayActivity will need to use.
 				scoreIT.putExtra("Score",score);
 				scoreIT.putExtra("Correct",correct);
 				scoreIT.putExtra("NumProblems",numProblem);
