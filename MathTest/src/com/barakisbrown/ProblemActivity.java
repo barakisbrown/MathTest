@@ -78,7 +78,14 @@ public class ProblemActivity extends Activity implements OnClickListener
 		Log.d("ProblemActivity onClick()","maxProblem = " + maxProblem);
 		// End Debug Code
 		EditText result = (EditText)findViewById(R.id.guessTxtBox);
-		UserGuessed = Integer.parseInt(result.getText().toString());
+		try
+		{
+			UserGuessed = Integer.parseInt(result.getText().toString());
+		} catch (java.lang.NumberFormatException numExcept)
+		{
+			return;
+		}
+		
 		try {
 			quiz.setGuess(UserGuessed, numProblem);
 		} catch (Exception e) {
@@ -86,7 +93,7 @@ public class ProblemActivity extends Activity implements OnClickListener
 			e.printStackTrace();
 		}
 		
-		if (numProblem  < 4)
+		if (numProblem  < (maxProblem - 1))
 		{
 			numProblem++;
 			// clear current problem
