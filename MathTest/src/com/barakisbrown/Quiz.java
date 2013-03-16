@@ -57,7 +57,8 @@ public class Quiz
 	/**
 	 * If Quiz static object has not been create it then call private constructor which will then
 	 * create the random object generator.  If Quiz object has been created then simply return it
-	 * back to the calling function.
+	 * back to the calling function. 
+	 * I am adding a check to make sure I initialize this class properly.
 	 * @return com.barakisbrown.Quiz
 	 * @param numProblems The number of Problems that the Quiz will be based on [1..10]
 	 */
@@ -65,6 +66,10 @@ public class Quiz
 	{
 		if (rtnObject == null)
 		{
+			if (numProblems < 1)
+				numProblems = 1;
+			else if (numProblems > 10)
+				numProblems = 10;
 			rtnObject = new Quiz(numProblems);
 			return rtnObject;
 		}
@@ -100,13 +105,12 @@ public class Quiz
 			else
 				return false;
 		}
-		
 	}
 	
 	/**
 	 * Sets Guess[index] to answer
 	 * @param Guess answer that the user gave
-	 * @param index int where in the Guess array I want to store this result
+	 * @param index where in the Guess array I want to store this result
 	 * @throws Exception 
 	 */
 	public void setGuess(int Guess,int index) throws Exception
@@ -122,9 +126,10 @@ public class Quiz
 	/**
 	 * Checks the score based on how well the user did by his guesses compared to the answers
 	 * For the caller to get the score he will need to use the getter function <code>double getScore()</code>
+	 * @return double The score of the quiz in question
 	 * 
 	 */
-	public void determineScore()
+	public double determineScore()
 	{
 		int numRight = 0;
 		
@@ -142,6 +147,7 @@ public class Quiz
 		}
 		score = (double)numRight / MAXPROBLEMS;
 		numCorrect = numRight;
+		return score;
 	}
 	
 	/**
