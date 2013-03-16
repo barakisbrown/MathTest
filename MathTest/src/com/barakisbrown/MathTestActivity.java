@@ -18,7 +18,7 @@ import android.widget.Spinner;
  * @author barakis
  *
  */
-public class MathTestActivity extends Activity
+public class MathTestActivity extends Activity implements OnItemSelectedListener
 {
 	private static final int SCORE_IT = 1000;
 	private ArrayAdapter<String> adapter;
