@@ -4,20 +4,11 @@
     android:layout_height="match_parent"
     android:orientation="vertical" >
 
-	<TextView 
-		android:id="@+id/TextView1"
-		android:layout_width="match_parent"
+	<TextView
+        android:layout_width="fill_parent"
         android:layout_height="wrap_content"
-        android:textAppearance="?android:attr/textAppearanceSmall"
-	/>"
-    
-    <TextView 
-		android:id="@+id/TextView1"
-		android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:textAppearance="?android:attr/textAppearanceSmall"
-	/>
-
+        android:text="" />
+      
     <TextView
         android:id="@+id/finalScoreLabel"
         android:layout_width="match_parent"
@@ -25,7 +16,12 @@
         android:text="@string/Total_Score"
         android:textAppearance="?android:attr/textAppearanceSmall" 
         android:textStyle="bold"
-        android:textColor="#ffffff"/>"
+        android:textColor="#ffffff"/>
+      
+   <TextView
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content"
+        android:text="" />
     
     <TextView
         android:id="@+id/finalScores"
@@ -34,7 +30,22 @@
         android:text="@string/Total_Score_2"
         android:textAppearance="?android:attr/textAppearanceSmall" 
         android:gravity="center"
-        android:textStyle="bold"/>"
+        android:textStyle="bold"/>
     
-
+    <TextView
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content"
+        android:text="" />
+    
+      <TextView
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content"
+        android:text="" />
+    
+      <TextView
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content"
+        android:text="@string/finished"
+        android:gravity="center" 
+        android:textStyle="bold"/>
 </LinearLayout>
