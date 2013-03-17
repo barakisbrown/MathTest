@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
     
@@ -41,4 +42,51 @@
         <item>Nine</item>
         <item>Ten</item>
     </string-array>
+=======
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    
+    <string name="app_name">MathTest</string>
+    <string name="Total_Score">CONGRATULATION:</string>
+    <string name="Total_Score_2">
+    		Problem Total #%1$d\n		Total Correct #%2$d\n
+    		You Scored %3$f%%!
+    </string>
+    <string name="ProblemLabel">Problem %1$d of %2$d</string>
+    
+    <style name="ButtonText">
+	    <item name="android:layout_width">fill_parent</item>
+	    <item name="android:layout_height">wrap_content</item>
+	    <item name="android:textColor">#ffffff</item>
+	    <item name="android:gravity">center</item>
+	    <item name="android:layout_margin">3dp</item>
+	    <item name="android:textSize">20sp</item>
+	    <item name="android:textStyle">bold</item>
+	    <item name="android:shadowColor">#000000</item>
+	    <item name="android:shadowDx">1</item>
+	    <item name="android:shadowDy">1</item>
+	    <item name="android:shadowRadius">2</item>
+    </style>
+    
+    <string name="welcome_msg">This simple quiz will test your math skills.\nPlease select how many of problems(Max of 10)\nOnce the quiz is done, it will display your score and grade.</string>
+    
+    <string name="begin_quiz">Begin Quiz</string>
+    <string name="choice_prompt">Please Select Number of Problems</string>
+
+    <string-array name="number_of_problems">
+        <item>None Selected</item>
+        <item>One</item>
+        <item>Two</item>
+        <item>Three</item>
+        <item>Four</item>
+        <item>Five</item>
+        <item>Six</item>
+        <item>Seven</item>
+        <item>Eight</item>
+        <item>Nine</item>
+        <item>Ten</item>
+    </string-array>
+      
+    	<string name="finished">Finished..To take another quiz press back twice</string>
+>>>>>>> refs/remotes/origin/spinner_test
 </resources>

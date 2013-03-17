@@ -11,34 +11,29 @@
         android:icon="@drawable/ic_launcher"
         android:allowBackup="true">
         <activity
-            android:name=".MathTestActivity" >
+            android:name=".MathTestActivity" 
+            android:label="Math Test">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 				<category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
         <activity 
-            android:name="com.barakisbrown.ProblemActivity">
+            android:name="com.barakisbrown.ProblemActivity"
+            android:label="Math Test">
             <intent-filter>
                 <action android:name="android.intent.action.VIEW"/>
                 <category android:name="android.intent.category.DEFAULT"/>
             </intent-filter>
         </activity>
         <activity 
-            android:name="com.barakisbrown.ScoreDisplayActivity">
+            android:name="com.barakisbrown.ScoreDisplayActivity"
+            android:label="Math Test">
             <intent-filter>
 	            <action android:name="android.intent.action.VIEW"/>
 	            <category android:name="android.intent.category.DEFAULT"/>
             </intent-filter>
-        </activity>
-        <activity
-            android:name="com.barakisbrown.TestProblemActivity">
-            <intent-filter>
-                <action android:name="android.intent.action.VIEW"/>
-                <category android:name="android.intent.category.DEFAULT"/>
-            </intent-filter>
-            
-        </activity>
+        </activity>        
     </application>
 
 </manifest>

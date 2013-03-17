@@ -4,7 +4,7 @@ import android.app.Activity;
 import android.os.Bundle;
 import android.util.Log;
 import android.widget.TextView;
-import com.barakisbrown.Quiz;
+import android.widget.Toast;
 
 /***
  * This is the master ScoreDisplayActivity Class.
@@ -16,6 +16,7 @@ public class ScoreDisplayActivity extends Activity
 	private double totalScore = 0;
 	private int totalCorrect = 0;
 	private int numProblems = 0;
+	private int backKeyPressedTimes = 0;
 	
 	@Override
 	protected void onCreate(Bundle savedState) 
@@ -35,5 +36,21 @@ public class ScoreDisplayActivity extends Activity
 		totalScore = totalScore * 100.00;
 		totalDispStr = String.format(totalDispStr,numProblems,totalCorrect,totalScore);
 		totalScoreDisplay.setText(totalDispStr);
-	}	
+		
+	}
+	@Override
+	public void onBackPressed()
+	{
+		if (backKeyPressedTimes == 0)
+		{
+			String msg = "Press back key one more time to exit quiz.";
+			Toast.makeText(getBaseContext(),msg,Toast.LENGTH_LONG).show();
+			backKeyPressedTimes++;
+		}
+		else if (backKeyPressedTimes == 1)
+		{
+			setResult(RESULT_OK);
+			finish();
+		}
+	}
 }
