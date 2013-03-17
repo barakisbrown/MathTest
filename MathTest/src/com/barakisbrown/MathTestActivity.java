@@ -21,6 +21,7 @@ import android.widget.Spinner;
 public class MathTestActivity extends Activity implements OnItemSelectedListener
 {
 	private static final int SCORE_IT = 1000;
+	private static final int SCORE_IT_FINISH = 1001;
 	private ArrayAdapter<String> adapter;
 	private Spinner choices;
 	
@@ -68,7 +69,15 @@ public class MathTestActivity extends Activity implements OnItemSelectedListener
 				scoreIT.putExtra("Correct",correct);
 				scoreIT.putExtra("NumProblems",numProblem);
 				
-				startActivity(scoreIT);
+				startActivityForResult(scoreIT,SCORE_IT_FINISH);
+				Log.d("onActivityResults","Do I see this?");
+			}
+		}
+		case SCORE_IT_FINISH:
+		{
+			if (resultCode == Activity.RESULT_OK)
+			{
+				choices.setSelection(0);
 			}
 		}
 		default:
