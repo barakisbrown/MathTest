@@ -1,7 +1,6 @@
 package com.barakisbrown;
 
-import java.util.ArrayList;
-import java.util.List;
+import java.util.Iterator;
 import android.app.Activity;
 import android.content.Intent;
 import android.os.Bundle;
@@ -13,6 +12,7 @@ import android.widget.ImageView;
 import android.widget.TextView;
 import com.barakisbrown.Quiz;
 import android.util.Log;
+import com.barakisbrown.ProblemHelper;
 
 public class ProblemActivity extends Activity implements OnClickListener 
 {
@@ -24,7 +24,7 @@ public class ProblemActivity extends Activity implements OnClickListener
 	private String problemLabelString;
 	private String displayString;
 	private Quiz quiz;
-	private List<Integer> display;
+	private ProblemHelper helper;
 	// Controls Here
 	TextView problem;
 	Button submit;
@@ -57,7 +57,7 @@ public class ProblemActivity extends Activity implements OnClickListener
 		}
 		
 		problemLabelString = getResources().getString(R.string.ProblemLabel);
-		display = new ArrayList<Integer>();
+		helper = new ProblemHelper();
 		// initialize form controls
 		problem = (TextView)findViewById(R.id.problemLabel);
 		firstLeft = (ImageView)findViewById(R.id.leftNum1);
@@ -124,95 +124,59 @@ public class ProblemActivity extends Activity implements OnClickListener
 		// End Debug Code
 		LeftSide = quiz.getFirst(numProblem);
 		RightSide = quiz.getSecond(numProblem);
+		// DEBUG CODE HERE
+		Log.d("ProblemActivity displayLayout()","LeftSide  = " + LeftSide);
+		Log.d("ProblemActivity displayLayout()","RightSide = " + RightSide);
+		// END DEBUG
 		// update problem label
 		displayString = String.format(problemLabelString, numProblem + 1,maxProblem);
 		problem.setText(displayString);
 		// display numbers
-	    displayLeftSide(LeftSide);
-	    displayRightSide(RightSide);
+		helper.setLeftSide(LeftSide);
+		helper.setRightSide(RightSide);
+	    displayLeftSide();
+	    displayRightSide();
 	}
 
-	  private void displayLeftSide(int lside)
+	  private void displayLeftSide()
 	  {  
-		  getDisplay(lside);
-		  if (display.size() == 1)
+		  Iterator<Integer> itor = helper.buildLeftSide();
+		  int size = helper.getSize();
+		  if (size == 1)
 		  {
-		     int resID = display.remove(0);
-		     firstLeft.setImageResource(resID);
+			  int resId = itor.next();
+			  itor.remove();
+			  firstLeft.setImageResource(resId);
 		  }
-		  else
+		  if (size == 2)
 		  {
-		     int resID_1 = display.remove(0);
-		     int resID_2 = display.remove(0);
-		     firstLeft.setImageResource(resID_1);
-		     secondLeft.setImageResource(resID_2);
+			  int resId_1 = itor.next();
+			  itor.remove();
+			  firstLeft.setImageResource(resId_1);
+			  int resId_2 = itor.next();
+			  itor.remove();
+			  firstLeft.setImageResource(resId_2);
 		  }
-		  display.clear();
 	  }
-
-	  private void displayRightSide(int rside)
-	  {
-		  getDisplay(rside);
-		  if (display.size() == 1)
-		  {
-			  int resID = display.remove(0);
-			  firstRight.setImageResource(resID);
-		  }
-		  else
-		  {
-			  int resID_1 = display.remove(0);
-			  int resID_2 = display.remove(0);
-			  firstRight.setImageResource(resID_1);
-			  secondRight.setImageResource(resID_2);
-		  }
-		  display.clear();
-	  }
-
-	  private void getDisplay(int Number)
-	  {
 	  
-	    String numStr = String.valueOf(Number);
-
-	    int Length = numStr.length();
-
-	    for (int counter = 0; counter < Length; counter++)
-	    {
-	      int displayNumber = Character.getNumericValue(numStr.charAt(counter));
-	      switch (displayNumber)
-	      {
-	      case 0:
-	    	  display.add(R.drawable.num0);
-	    	  break;
-	      case 1:
-	    	  display.add(R.drawable.num1);
-	    	  break;
-	      case 2:
-	    	  display.add(R.drawable.num2);
-	    	  break;
-	      case 3:
-	    	  display.add(R.drawable.num3);
-	    	  break;
-	      case 4:
-	    	  display.add(R.drawable.num4);
-	    	  break;
-	      case 5:
-	    	  display.add(R.drawable.num5);
-	    	  break;
-	      case 6:
-	    	  display.add(R.drawable.num6);
-	    	  break;
-	      case 7:
-	    	  display.add(R.drawable.num7);
-	    	  break;
-	      case 8:
-	    	  display.add(R.drawable.num8);
-	    	  break;
-	      case 9:
-	    	  display.add(R.drawable.num9);
-	    	  break;
-	      default:
-	    	  break;
-	      }
-	    }
-	}
+	  private void displayRightSide()
+	  {
+		  Iterator<Integer> itor = helper.buildRightSide();
+		  int size = helper.getSize();
+		  if (size == 1)
+		  {
+			  int resId = itor.next();
+			  itor.remove();
+			  firstRight.setImageResource(resId);
+		  }
+		  if (size == 2)
+		  {
+			  int resId_1 = itor.next();
+			  itor.remove();
+			  firstRight.setImageResource(resId_1);
+			  int resId_2 = itor.next();
+			  itor.remove();
+			  firstRight.setImageResource(resId_2);
+		  }
+	  }
 }
