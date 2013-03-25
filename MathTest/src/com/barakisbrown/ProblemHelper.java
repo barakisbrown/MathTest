@@ -37,13 +37,17 @@ public class ProblemHelper
 	
 	public Iterator<Integer> buildLeftSide()
 	{
+		Log.d("ProblemHelper buildLeftSide","display size = " + display.size());
 		setDisplay(LeftSide);
+		Log.d("ProblemHelper buildLeftSide","display size = " + display.size());
 		return display.iterator();
 	}
 	
 	public Iterator<Integer> buildRightSide()
 	{
+		Log.d("ProblemHelper buildRightSide","display size = " + display.size());
 		setDisplay(RightSide);
+		Log.d("ProblemHelper buildRightSide","display size = " + display.size());
 		return display.iterator();
 	}
 	
