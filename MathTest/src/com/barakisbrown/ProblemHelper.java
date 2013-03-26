@@ -40,6 +40,17 @@ public class ProblemHelper
 		Log.d("ProblemHelper buildLeftSide","display size = " + display.size());
 		setDisplay(LeftSide);
 		Log.d("ProblemHelper buildLeftSide","display size = " + display.size());
+		// Traverse the list so that i can see the elements to make sure it proper working before i return the iterator
+		int value = 0;
+		Iterator<Integer> itor = display.iterator();
+		while (itor.hasNext())
+		{
+			value = itor.next();
+			Log.d("ProblemHelper buildLeftSide","value = " + value);
+			
+		}
+		
+		
 		return display.iterator();
 	}
 	
@@ -60,6 +71,8 @@ public class ProblemHelper
 	{
 	  
 	    String numStr = String.valueOf(Number);
+	    Log.d("ProblemHelper setDisplay","Number = " + Number);
+	    Log.d("ProblemHelper setDisplay","numStr = " + numStr);
 
 	    int Length = numStr.length();
 
@@ -87,7 +100,7 @@ public class ProblemHelper
 	    	  display.add(R.drawable.num5);
 	    	  break;
 	      case 6:
-	    	  display.add(R.drawable.num6);
+	      display.add(R.drawable.num6);
 	    	  break;
 	      case 7:
 	    	  display.add(R.drawable.num7);
