@@ -143,20 +143,25 @@ public class ProblemActivity extends Activity implements OnClickListener
 		  Iterator<Integer> itor = helper.buildLeftSide();
 		  displayList();
 		  int size = helper.getSize();
+		  // Begin Test
+		  
 		  if (size == 1)
 		  {
 			  int resId = itor.next();
+			  Log.d("ProblemActivity displayLeftSide()","resID = " + resId);
 			  itor.remove();
 			  firstLeft.setImageResource(resId);
 		  }
 		  if (size == 2)
 		  {
 			  int resId_1 = itor.next();
+			  Log.d("ProblemActivity displayLeftSide()","resID_1 = " + resId_1);
 			  itor.remove();
 			  firstLeft.setImageResource(resId_1);
 			  int resId_2 = itor.next();
+			  Log.d("ProblemActivity displayLeftSide()","resID_2 = " + resId_2);
 			  itor.remove();
-			  firstLeft.setImageResource(resId_2);
+			  secondLeft.setImageResource(resId_2);
 		  }
 	  }
 	  
@@ -177,18 +182,20 @@ public class ProblemActivity extends Activity implements OnClickListener
 			  firstRight.setImageResource(resId_1);
 			  int resId_2 = itor.next();
 			  itor.remove();
-			  firstRight.setImageResource(resId_2);
+			  secondRight.setImageResource(resId_2);
 		  }
 	  }
 	  
 	  private void displayList()
 	  {
 		  int value = 0;
+		  int counter = 1;
 		  Iterator<Integer> itor = helper.getList();
 		  while (itor.hasNext())
 		  {
 			  value = itor.next();
-			  Log.d("ProblemActivity displayList","value " + value);
+			  Log.d("ProblemActivity displayList","counter = " + counter + "value " + value);
+			  counter++;
 		  }
 	  }
 	  
