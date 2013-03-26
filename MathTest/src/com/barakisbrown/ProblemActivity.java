@@ -141,6 +141,7 @@ public class ProblemActivity extends Activity implements OnClickListener
 	  private void displayLeftSide()
 	  {  
 		  Iterator<Integer> itor = helper.buildLeftSide();
+		  displayList();
 		  int size = helper.getSize();
 		  if (size == 1)
 		  {
@@ -179,4 +180,16 @@ public class ProblemActivity extends Activity implements OnClickListener
 			  firstRight.setImageResource(resId_2);
 		  }
 	  }
+	  
+	  private void displayList()
+	  {
+		  int value = 0;
+		  Iterator<Integer> itor = helper.getList();
+		  while (itor.hasNext())
+		  {
+			  value = itor.next();
+			  Log.d("ProblemActivity displayList","value " + value);
+		  }
+	  }
+	  
 }
