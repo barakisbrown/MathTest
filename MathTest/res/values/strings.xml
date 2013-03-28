@@ -42,4 +42,8 @@
         <item>Ten</item>
     </string-array>
     	<string name="finished">Finished..To take another quiz press back twice</string>
+    	<string name="image_desc">Image of a Number from 0 - 9</string>
+    	<string name="plus_image_dec">Image of a plus sign</string>
+    	<string name="equal_image_desc">Image of an Equal Sign</string>
+    	<string name="submit_answer_text">Submit Answer</string>
 </resources>
