@@ -14,9 +14,9 @@ import com.barakisbrown.ProblemHelper;
 
 public class DynamicImageTest extends Activity implements OnClickListener
 {
-	private int leftSide = 100;
-	private int rightSide = 100;
-	private int total = 200;
+	private int leftSide = 10;
+	private int rightSide = 20;
+	private int total = 30;
 	ProblemHelper helper;
 	
 	//GUI RELATED
