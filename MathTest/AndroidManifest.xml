@@ -14,8 +14,8 @@
             android:name=".MathTestActivity" 
             android:label="Math Test">
             <intent-filter>
-                <action android:name="android.intent.action.MAIN" />
-				<category android:name="android.intent.category.LAUNCHER" />
+                <action android:name="android.intent.action.VIEW" />
+				<category android:name="android.intent.category.DEFAULT" />
             </intent-filter>
         </activity>
         <activity 
@@ -33,7 +33,16 @@
 	            <action android:name="android.intent.action.VIEW"/>
 	            <category android:name="android.intent.category.DEFAULT"/>
             </intent-filter>
-        </activity>        
-    </application>
+        </activity> 
+        <!-- Remove After Testing -->
+        <activity
+            android:name="com.barakisbrown.DynamicImageTest"      
+            android:label="Math Test">
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN"/>
+                <category android:name="android.intent.category.LAUNCHER"/>
+           </intent-filter>
+       </activity>
+   </application>
 
 </manifest>
