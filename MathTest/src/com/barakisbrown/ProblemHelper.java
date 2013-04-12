@@ -62,6 +62,18 @@ public class ProblemHelper
 		return display.iterator();
 	}
 	
+	/***
+	 * This is a generic builder which takes an integer and then returns the resources like the others too 
+	 * in this class.
+	 * @param intToImg
+	 * @return Iterator<Int>
+	 */
+	public Iterator<Integer> builder(int intToImg)
+	{
+		setDisplay(intToImg);
+		return display.iterator();
+	}
+	
 	public int getSize()
 	{
 		return display.size();
