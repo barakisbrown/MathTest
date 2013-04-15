@@ -40,6 +40,7 @@ public class DynamicImageTest extends Activity implements OnClickListener
 
 	public void onClick(View v) 
 	{
+		
 		// plus sign
 		plusSign = new ImageView(this);
 		plusSign.setScaleType(ImageView.ScaleType.FIT_CENTER);
@@ -48,6 +49,12 @@ public class DynamicImageTest extends Activity implements OnClickListener
 		equalSign = new ImageView(this);
 		equalSign.setScaleType(ImageView.ScaleType.FIT_CENTER);
 		equalSign.setImageResource(R.drawable.equalsign);
+		// If there are elements, delete them and then dispaly what is needed.
+		if (dyn_view.getChildCount() > 0)
+		{
+			dyn_view.removeAllViews();
+			
+		}
 		// now i will be able to add the rest of those
 		helper.setLeftSide(leftSide);
 		helper.setRightSide(rightSide);
