@@ -9,12 +9,9 @@ import android.util.Log;
 public class ProblemHelper 
 {
 	private List<Integer> display;
-	private int LeftSide;
-	private int RightSide;
 	
 	public ProblemHelper() 
 	{ 
-		LeftSide = RightSide = 0;
 		display = new ArrayList<Integer>();
 	}
 	
@@ -23,45 +20,6 @@ public class ProblemHelper
 		return display.iterator();
 	}
 
-	public void setLeftSide(int leftSide) 
-	{
-		Log.d("ProblemHelper setLeftSide","leftSide = " + leftSide);
-		LeftSide = leftSide;
-	}
-
-	public void setRightSide(int rightSide) 
-	{
-		Log.d("ProblemHelper setLeftSide","rightSide = " + rightSide);
-		RightSide = rightSide;
-	}
-	
-	public Iterator<Integer> buildLeftSide()
-	{
-		Log.d("ProblemHelper buildLeftSide","display size = " + display.size());
-		setDisplay(LeftSide);
-		Log.d("ProblemHelper buildLeftSide","display size = " + display.size());
-		// Traverse the list so that i can see the elements to make sure it proper working before i return the iterator
-		int value = 0;
-		Iterator<Integer> itor = display.iterator();
-		while (itor.hasNext())
-		{
-			value = itor.next();
-			Log.d("ProblemHelper buildLeftSide","value = " + value);
-			
-		}
-		
-		
-		return display.iterator();
-	}
-	
-	public Iterator<Integer> buildRightSide()
-	{
-		Log.d("ProblemHelper buildRightSide","display size = " + display.size());
-		setDisplay(RightSide);
-		Log.d("ProblemHelper buildRightSide","display size = " + display.size());
-		return display.iterator();
-	}
-	
 	/***
 	 * This is a generic builder which takes an integer and then returns the resources like the others too 
 	 * in this class.
@@ -74,11 +32,23 @@ public class ProblemHelper
 		return display.iterator();
 	}
 	
+	/**
+	 * Return the size of the Collection[display]
+	 * @return integer size of the collection
+	 */
 	public int getSize()
 	{
 		return display.size();
 	}
 	
+	/**
+	 * This function will take a number and then convert each of the digits into their Image Version and then
+	 * store them in the collection called display which then can be iterated over and be displayed.
+	 * For Example : setDisplay(10) would take the number of 10 and break them into the digits '1' and '0'
+	 *             : and then it will take 1 and create an ImageResourceId and store it.
+	 *             : continues until all of the digits are completed
+	 * @param Number A number that will be translated to Images of the Same Number stored in collection display
+	 */
 	private void setDisplay(int Number)
 	{
 	  
