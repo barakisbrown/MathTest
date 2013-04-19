@@ -41,5 +41,16 @@
         <item>Nine</item>
         <item>Ten</item>
     </string-array>
+    
+    	<!-- Image Description Section -->
     	<string name="finished">Finished..To take another quiz press back twice</string>
+    	<string name="image_desc">Image of a Number from 0 - 9</string>
+    	<string name="plus_image_dec">Image of a plus sign</string>
+    	<string name="equal_image_desc">Image of an Equal Sign</string>
+    	<string name="submit_answer_text">Submit Answer</string>
+    	<!-- Test Section Below -->
+    	<string name="Test_Title">Simple Dynamic Image Test</string>
+    	<string name="Test_Desc">Lets see if I can display dynamic images</string>	
+    	<string name="Test_Button">Click to Begin Test</string>
+    	<string name="Test_image_Desc">Image of a Problem</string>
 </resources>
