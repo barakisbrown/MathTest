@@ -14,7 +14,7 @@ import android.widget.Spinner;
  * I have modified this from the original where I will use a spinner instead of button. The reason is that when I used
  * a button it was hard coded number of problems but now I want to make it where I can chose how many problems.
  * 
- * I have also modified it so that it will call ProblemActivity2 which generates the dispaly of the problem dynamically
+ * I have also modified it so that it will call ProblemActivity2 which generates the display of the problem dynamically
  * @author barakis
  *
  */
