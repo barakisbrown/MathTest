@@ -34,15 +34,6 @@
 	            <category android:name="android.intent.category.DEFAULT"/>
             </intent-filter>
         </activity> 
-        <!-- Remove After Testing -->
-        <activity
-            android:name="com.barakisbrown.DynamicImageTest"      
-            android:label="Math Test">
-            <intent-filter>
-                <action android:name="android.intent.action.VIEW"/>
-                <category android:name="android.intent.category.DEFAULT"/>
-           </intent-filter>
-       </activity>
        <!-- Replacement of ProblemActivity once all kinks are worked out -->
          <activity 
             android:name="com.barakisbrown.ProblemActivity2"
