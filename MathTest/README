@@ -12,3 +12,6 @@ Welcome to MathTest by Matthew Brown
   3.Created a test class to see if I could dynamically display the problem to the screen before it used specific Image Holders now its completely dynamic
   4.Completely modified ProblemActivity where it no longer needed. Cloned it creating ProblemActivity2 for the process of dynamic problem display.
   
+  *Things to do*
+  1. Implement a setting window to help change the random problems to either 1 to [99,999,9999]
+  2. Change ScoreDisplay so that it will display the problems missed so that user can see it which it will also show the correct answer
