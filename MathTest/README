@@ -6,6 +6,9 @@ Welcome to MathTest by Matthew Brown
   maybe other skills since this can be done easily as a foundation of learning/developing/deploying an
   android application.
   
-  This quiz will ask the user 5 questions which it will be randomally generated each time the application is
-  ran.
+  *Changes*
+  1.Changed it from only using 5 questions to 10 questions
+  2.Changed the button to a spinner therefore removing the hard coded number of problem to being dynamically chosen
+  3.Created a test class to see if I could dynamically display the problem to the screen before it used specific Image Holders now its completely dynamic
+  4.Completely modified ProblemActivity where it no longer needed. Cloned it creating ProblemActivity2 for the process of dynamic problem display.
   
