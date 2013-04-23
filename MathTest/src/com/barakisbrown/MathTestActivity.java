@@ -3,7 +3,6 @@ package com.barakisbrown;
 import android.app.Activity;
 import android.content.Intent;
 import android.os.Bundle;
-import android.util.Log;
 import android.view.Gravity;
 import android.view.View;
 import android.widget.AdapterView;
@@ -15,6 +14,7 @@ import android.widget.Spinner;
  * I have modified this from the original where I will use a spinner instead of button. The reason is that when I used
  * a button it was hard coded number of problems but now I want to make it where I can chose how many problems.
  * 
+ * I have also modified it so that it will call ProblemActivity2 which generates the display of the problem dynamically
  * @author barakis
  *
  */
@@ -68,9 +68,8 @@ public class MathTestActivity extends Activity implements OnItemSelectedListener
 				scoreIT.putExtra("Score",score);
 				scoreIT.putExtra("Correct",correct);
 				scoreIT.putExtra("NumProblems",numProblem);
-				
+				// Launch the ScoreDisplay Activity
 				startActivityForResult(scoreIT,SCORE_IT_FINISH);
-				Log.d("onActivityResults","Do I see this?");
 			}
 		}
 		case SCORE_IT_FINISH:
@@ -85,10 +84,12 @@ public class MathTestActivity extends Activity implements OnItemSelectedListener
 		}
 	}
    	
+   	/**
+   	 * Using this function to determine which item in the spinner the user is selecting which determines 
+   	 * the number of problems the user will face. Right now, it is set between 1 AND 10 
+   	*/
    	public void onItemSelected(AdapterView<?> arg0, View arg1, int position,long arg3) 
 	{
-		Log.d("OnItemSelected Function","position = " + position);
-	
 		if (position == 0)
 		{	
 			return;
