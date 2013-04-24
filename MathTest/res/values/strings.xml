@@ -2,7 +2,7 @@
 <resources>
     
     <string name="app_name">MathTest</string>
-    <string name="Total_Score">CONGRATULATION:</string>
+    <string name="Score_Header">CONGRATULATION:</string>
     <string name="Total_Score_2">
     		Problem Total #%1$d\n		Total Correct #%2$d\n
     		You Scored %3$f%%!
@@ -49,8 +49,5 @@
     	<string name="equal_image_desc">Image of an Equal Sign</string>
     	<string name="submit_answer_text">Submit Answer</string>
     	<!-- Test Section Below -->
-    	<string name="Test_Title">Simple Dynamic Image Test</string>
-    	<string name="Test_Desc">Lets see if I can display dynamic images</string>	
-    	<string name="Test_Button">Click to Begin Test</string>
-    	<string name="Test_image_Desc">Image of a Problem</string>
+    	<string name="numb_problems">NUMBER OF PROBLEMS #</string>
 </resources>
