@@ -1,10 +1,14 @@
 package com.barakisbrown;
 
+import java.util.Iterator;
+
 import android.app.Activity;
 import android.os.Bundle;
 import android.util.Log;
+import android.widget.ImageView;
 import android.widget.TextView;
 import android.widget.Toast;
+import com.barakisbrown.ProblemHelper;
 
 /***
  * This is the master ScoreDisplayActivity Class.
@@ -17,25 +21,26 @@ public class ScoreDisplayActivity2 extends Activity
 	private int totalCorrect = 0;
 	private int numProblems = 0;
 	private int backKeyPressedTimes = 0;
+	private ProblemHelper helper;
 	
 	@Override
 	protected void onCreate(Bundle savedState) 
 	{
 		Log.d("ScoreDisplayActivity","Entering OnCreate()");
 		super.onCreate(savedState);
-		setContentView(R.layout.scoredisplay);
+		setContentView(R.layout.scoredisplay_new);
 		
-		final TextView totalScoreDisplay = (TextView)findViewById(R.id.finalScores);
-		
-		String totalDispStr = getResources().getString(R.string.Total_Score_2);
-		
+		final ImageView probTotal = (ImageView)findViewById(R.id.probTotal);
+		helper = new ProblemHelper();
+		// get values from the intent that called this activity
 		totalScore = getIntent().getDoubleExtra("Score",100.0); 
 		totalCorrect = getIntent().getIntExtra("Correct",5);
 		numProblems = getIntent().getIntExtra("NumProblems",5);
 		// manipulate totalscore where it will show 100% not .100%
 		totalScore = totalScore * 100.00;
-		totalDispStr = String.format(totalDispStr,numProblems,totalCorrect,totalScore);
-		totalScoreDisplay.setText(totalDispStr);
+		// NEW SECTION
+		Iterator<Integer> itor = helper.builder(numProblems);
+		probTotal.setImageResource(itor.next());
 		
 	}
 	@Override
