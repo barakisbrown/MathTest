@@ -30,20 +30,21 @@
    
    <LinearLayout 
         android:layout_width="match_parent"
-        android:layout_height="match_parent"
+        android:layout_height="wrap_content"
         android:orientation="horizontal">
    		
      <TextView
-		android:layout_width="fill_parent"
-		android:layout_height="wrap_content"
-		android:layout_gravity="center_horizontal"
-		android:text="@string/numb_problems"/>          
-     <ImageView 
-        android:layout_width="fill_parent"
-		android:layout_height="wrap_content"
-		android:scaleType="center"         
-        android:id="@+id/probTotal"         
-      /> 
+         android:layout_width="wrap_content"
+         android:layout_height="wrap_content"
+         android:layout_gravity="center_horizontal"
+         android:text="@string/numb_problems" />
+
+     <ImageView
+         android:id="@+id/probTotal"
+         android:layout_width="fill_parent"
+         android:layout_height="wrap_content"
+         android:scaleType="center" />
+
    </LinearLayout> 
    
    
