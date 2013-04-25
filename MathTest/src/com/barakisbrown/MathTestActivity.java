@@ -63,7 +63,7 @@ public class MathTestActivity extends Activity implements OnItemSelectedListener
 				int correct = data.getIntExtra("Correct",0);
 				int numProblem = data.getIntExtra("NumProblems",0);
 				// now lets call the Activity ScoreDisplayActivity
-				Intent scoreIT = new Intent(this,ScoreDisplayActivity.class);
+				Intent scoreIT = new Intent(this,ScoreDisplayActivity2.class);
 				// store information which ScoreDisplayActivity will need to use.
 				scoreIT.putExtra("Score",score);
 				scoreIT.putExtra("Correct",correct);
