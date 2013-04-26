@@ -49,5 +49,6 @@
     	<string name="equal_image_desc">Image of an Equal Sign</string>
     	<string name="submit_answer_text">Submit Answer</string>
     	<!-- Test Section Below -->
-    	<string name="numb_problems">NUMBER OF PROBLEMS #</string>
+    	<string name="numb_problems">PROBLEMS GIVEN #</string>
+    	<string name="numb_correct">PROBLEMS ANSWERED CORRECTLY #</string>
 </resources>
