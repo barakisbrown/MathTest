@@ -31,6 +31,7 @@ public class ScoreDisplayActivity2 extends Activity
 		setContentView(R.layout.scoredisplay_new);
 		
 		final ImageView probTotal = (ImageView)findViewById(R.id.probTotal);
+		final ImageView probCorrect = (ImageView)findViewById(R.id.probCorrect);
 		helper = new ProblemHelper();
 		// get values from the intent that called this activity
 		totalScore = getIntent().getDoubleExtra("Score",100.0); 
@@ -39,8 +40,19 @@ public class ScoreDisplayActivity2 extends Activity
 		// manipulate totalscore where it will show 100% not .100%
 		totalScore = totalScore * 100.00;
 		// NEW SECTION
-		Iterator<Integer> itor = helper.builder(numProblems);
+		// For the following section I am going to be needing an iterator for displaying images to the screen
+		Iterator<Integer> itor;
+		// Display the number of Problems to the screen
+		itor = helper.builder(numProblems);
 		probTotal.setImageResource(itor.next());
+		itor.remove();
+		// I need to display the number for how many correct
+		itor = helper.builder(totalCorrect);
+		probCorrect.setImageResource(itor.next());
+		itor.remove();
+		// I need to display the user TotalScore to the Screen Here
+		
+		
 		
 	}
 	@Override
