@@ -43,7 +43,7 @@
          android:id="@+id/probTotal"
          android:layout_width="fill_parent"
          android:layout_height="wrap_content"
-         android:scaleType="center" />
+         android:scaleType="fitEnd" />
 
    </LinearLayout> 
  
@@ -59,13 +59,30 @@
          android:text="@string/numb_correct"/>
        
        <ImageView
-         android:id="@+id/probCorrect"
-         android:layout_width="fill_parent"
-         android:layout_height="wrap_content"
-         android:scaleType="center" />
+           android:id="@+id/probCorrect"
+           android:layout_width="fill_parent"
+           android:layout_height="wrap_content"
+           android:scaleType="fitEnd" />
+
    </LinearLayout>
-   
-   
+
+   <LinearLayout
+       android:layout_width="match_parent"
+       android:layout_height="wrap_content"
+       android:orientation="horizontal" >
+
+       <TextView
+           android:layout_width="match_parent"
+           android:layout_height="wrap_content"
+           android:text="@string/total_percentage_correct"/>
+       
+       <ImageView
+           android:id="@+id/probTotalScore"
+           android:layout_width="fill_parent"
+           android:layout_height="wrap_content"
+           android:scaleType="fitEnd" />
+
+   </LinearLayout>
     
    <TextView
         android:layout_width="fill_parent"
