@@ -51,4 +51,5 @@
     	<!-- Test Section Below -->
     	<string name="numb_problems">PROBLEMS GIVEN #</string>
     	<string name="numb_correct">PROBLEMS ANSWERED CORRECTLY #</string>
+    	<string name="total_percentage_correct">YOUR TOTAL SCORE IS </string>
 </resources>
