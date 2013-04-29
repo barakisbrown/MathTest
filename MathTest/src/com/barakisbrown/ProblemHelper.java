@@ -74,6 +74,7 @@ public class ProblemHelper
 		return display.iterator();
 	}
 	
+	
 	public int getSize()
 	{
 		return display.size();
@@ -134,5 +135,5 @@ public class ProblemHelper
 		      }
 		    }
 		}
-	}
+	}	
 }
