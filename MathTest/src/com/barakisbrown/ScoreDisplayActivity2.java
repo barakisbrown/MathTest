@@ -35,7 +35,7 @@ public class ScoreDisplayActivity2 extends Activity
 		
 		final ImageView probTotal = (ImageView)findViewById(R.id.probTotal);
 		final ImageView probCorrect = (ImageView)findViewById(R.id.probCorrect);
-		final LinearLayout probTotalScore = (LinearLayout)findViewById(R.id.probTotalScore);
+		LinearLayout probTotalScore = (LinearLayout)findViewById(R.id.probTotalScore);
 		helper = new ProblemHelper();
 		// get values from the intent that called this activity
 		totalScore = getIntent().getDoubleExtra("Score",100.0); 
@@ -57,19 +57,21 @@ public class ScoreDisplayActivity2 extends Activity
 		// I need to display the user TotalScore to the Screen Here
 		// Since this will be a variable number from 2 to 4 digits .. ie 2% to 100% .. I am using a view
 		// then dynamically adding the numbers followed by the percent sign to it.
-		ImageView iv = new ImageView(this);
+		ImageView iv;
 		int dblvalue = (int)totalScore;
 		itor = helper.builder(dblvalue);
 		
 		while(itor.hasNext())
 		{
+			iv = new ImageView(this);
 			iv.setScaleType(ScaleType.FIT_CENTER);
 			iv.setImageResource(itor.next());
+			itor.remove();
 			// Might have to add a layout here
 			probTotalScore.addView(iv);
-			itor.remove();
 		}
 		// add percent sign
+		iv = new ImageView(this);
 		iv.setScaleType(ScaleType.FIT_CENTER);
 		iv.setImageResource(R.drawable.percent);
 		probTotalScore.addView(iv);
