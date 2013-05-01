@@ -72,9 +72,9 @@
        android:orientation="horizontal" >
 
        <TextView
-           android:layout_width="match_parent"
+           android:layout_width="172dp"
            android:layout_height="wrap_content"
-           android:text="@string/total_percentage_correct"/>
+           android:text="@string/total_percentage_correct" />
        
        <LinearLayout
            android:id="@+id/probTotalScore"
