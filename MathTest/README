@@ -1,4 +1,5 @@
 Welcome to MathTest by Matthew Brown
+
   Simple Application for me to learn Android Development by creating a simple math quiz application.
   This is stored here so that I can access it where I want either at home or at work when I am using my labtop.
   
@@ -15,3 +16,5 @@ Welcome to MathTest by Matthew Brown
   *Things to do*
   1. Implement a setting window to help change the random problems to either 1 to [99,999,9999]
   2. Change ScoreDisplay so that it will display the problems missed so that user can see it which it will also show the correct answer
+  3. Implement a method in either the quiz class or somewhere that I can pass the missed questions to the score display activity so that
+     it can be properly display to the user.
