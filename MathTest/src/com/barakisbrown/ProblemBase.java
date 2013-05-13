@@ -12,23 +12,21 @@ public class ProblemBase
 
 	private int leftSide, rightSide;
 	private int total;
-	private int answer;
 	private int guess;
 	private boolean correct;
 	
 	public ProblemBase()
 	{
 		leftSide = rightSide = total = 0;
-		answer = guess = 0;
+		guess = 0;
 		correct = true;
 	}
 	
-	public ProblemBase(int left,int right,int totalValue)
+	public ProblemBase(int left,int right)
 	{
 		leftSide = left;
 		rightSide = right;
-		total = totalValue;
-		answer = leftSide + rightSide;
+		total = leftSide + rightSide;
 		guess = 0;
 		correct = false;
 	}
@@ -37,7 +35,6 @@ public class ProblemBase
 	public int getLeftSide() { return leftSide; }
 	public int getRightSide() { return rightSide; }
 	public int getTotal() { return total; }
-	public int getAnswer() { return answer; }
 	public int getGuess() { return guess; }
 	public boolean isCorrect() { return correct; }
 	
@@ -48,7 +45,13 @@ public class ProblemBase
 		correct = (guess == userGuessed) ? true : false;		
 	}
 	
+	public void setLeftSide(int left)
+	{
+		leftSide = left;
+	}
 	
-	
-	
+	public void setRightSide(int right)
+	{
+		rightSide = right;
+	}	
 }
