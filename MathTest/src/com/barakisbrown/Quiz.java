@@ -163,4 +163,12 @@ public class Quiz
 		}
 		quizUsedCount++;
 	}
+	
+	/**
+	 * return the problem class so that I can use it to display to the screen
+	 */
+	ProblemBase[] getProblems()
+	{
+		return Problems;
+	}
 }
