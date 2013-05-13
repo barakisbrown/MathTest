@@ -2,6 +2,7 @@ package com.barakisbrown;
 
 import java.util.Random;
 import android.util.Log;
+import com.barakisbrown.ProblemBase;
 /**
  * Quiz is to represent the 'business' login of the MathTest Application
  * I probably could turn this more into a generic version instead of hard coding
@@ -30,9 +31,7 @@ public class Quiz
 	private int quizUsedCount = 1;
 	private double score = 0.0;
 	
-	private int []Answers;
-	private int []Guesses;
-	private int[][] Problems;
+	private ProblemBase []Problems;
 	
 	
 	
@@ -53,9 +52,7 @@ public class Quiz
 	private void initVars(int numProblems)
 	{
 		MAXPROBLEMS = numProblems;
-		Problems = new int[MAXPROBLEMS][2];
-		Answers = new int[MAXPROBLEMS];
-		Guesses = new int[MAXPROBLEMS];
+		Problems = new ProblemBase[MAXPROBLEMS];
 	}
 	
 
@@ -95,35 +92,14 @@ public class Quiz
 		Log.d("Quiz getFirst()","Index = " + index);
 		Log.d("Quiz getFirst()","MAXPROBLEMS = " + MAXPROBLEMS);
 		// END DEBUG
-		return Problems[index][0]; 
+		return Problems[0].getLeftSide(); 
 	}
-	public int getSecond(int index) { return Problems[index][1]; }
-	public int getAnswer(int index) {  return Answers[index]; }
+	public int getSecond(int index) { return Problems[index].getRightSide(); }
+	public int getAnswer(int index) { return Problems[index].getTotal(); }
 	public int getNumProblems()     { return MAXPROBLEMS; }
 	public int getNumCorrect()      { return numCorrect; }
 	public double getScore()        { return score; }
 	
-	/**
-	 * Checks the Answers Array vs the Guess Array at the index to determine if the
-	 * Guess is correct or not
-	 * @param index
-	 * @return true Guess = Answer, false otherwise
-	 * @throws Exception 
-	 */
-	private boolean isCorrect(int index) throws Exception
-	{
-		if (index < 0 || index > MAXPROBLEMS)
-		{
-			throw new Exception("Wrong Index Value .. Value is out of range from 0 .. MAXPROBLEMS");
-		}
-		else
-		{
-			if (Answers[index] == Guesses[index])
-				return true;
-			else
-				return false;
-		}
-	}
 	
 	/**
 	 * Sets Guess[index] to answer
@@ -138,7 +114,10 @@ public class Quiz
 			throw new Exception("Wrong Index Value .. Value is out of range from 0 .. MAXPROBLEMS");
 		}
 		else
-			Guesses[index] = Guess;
+		{
+			Problems[index].setGuess(Guess);
+		}
+			
 	}
 	
 	/**
@@ -153,15 +132,8 @@ public class Quiz
 		
 		for (int index = 0;index < MAXPROBLEMS; index++)
 		{
-			try
-			{
-				if (isCorrect(index))
-					numRight++;
-			}catch(Exception Ex)
-			{
-				System.out.println(Ex.getMessage());
-			}
-			
+			if (Problems[index].isCorrect() == true)
+				numRight++;
 		}
 		score = (double)numRight / MAXPROBLEMS;
 		numCorrect = numRight;
@@ -180,17 +152,14 @@ public class Quiz
 			// Need to either return an exception stating that Quiz has not be initialized yet
 			throw new Exception("Quiz needs to be initialized first. Make sure you have called Quiz.Init(numProblems) First!");
 		}
-		// since rnd exists then I will need to create the loop that makes the quiz
+		// since rnd variable exists then I will need to create the loop that makes the quiz
 		for (int X = 0;X < MAXPROBLEMS; X++)
 		{
 			int first = rnd.nextInt(MAXNUMBERUSED);
 			int second = rnd.nextInt(MAXNUMBERUSED);
-			int total = first + second;
 			
-			Problems[X][0] = first;
-			Problems[X][1] = second;
-			Answers[X] = total;
-			Guesses[X] = 0;
+			Problems[X].setLeftSide(first);
+			Problems[X].setRightSide(second);
 		}
 		quizUsedCount++;
 	}
