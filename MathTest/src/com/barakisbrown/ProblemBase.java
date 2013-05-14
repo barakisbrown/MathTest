@@ -1,5 +1,6 @@
 package com.barakisbrown;
 
+import android.util.Log;
 /***
  * Instead of storing them as arrays, I will store them in a class. For this application, regardless of the operand, I will always
  * be using two numbers equaling a value. ie. 6 + 4 = 10, 6 * 4 = 24, 6 - 4 = 2, etc.
@@ -42,7 +43,7 @@ public class ProblemBase
 	public void setGuess(int userGuessed) 
 	{
 		guess = userGuessed;
-		correct = (guess == userGuessed) ? true : false;		
+		correct = (guess == total) ? true : false;		
 	}
 	
 	public void setLeftSide(int left)
@@ -53,5 +54,10 @@ public class ProblemBase
 	public void setRightSide(int right)
 	{
 		rightSide = right;
-	}	
+	}
+	
+	public void setTotal(int value)
+	{
+		total = value;
+	}
 }
