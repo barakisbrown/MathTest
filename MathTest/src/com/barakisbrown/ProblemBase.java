@@ -23,11 +23,11 @@ public class ProblemBase
 		correct = true;
 	}
 	
-	public ProblemBase(int left,int right)
+	public ProblemBase(int left,int right,int totalValue)
 	{
 		leftSide = left;
 		rightSide = right;
-		total = leftSide + rightSide;
+		total = totalValue;
 		guess = 0;
 		correct = false;
 	}
