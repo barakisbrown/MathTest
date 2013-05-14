@@ -32,6 +32,7 @@ public class Quiz
 	private double score = 0.0;
 	
 	private ProblemBase []Problems;
+	private int numIncorrect = 0;
 	
 	
 	
@@ -134,6 +135,8 @@ public class Quiz
 		{
 			if (Problems[index].isCorrect() == true)
 				numRight++;
+			else
+				numIncorrect++;
 		}
 		score = (double)numRight / MAXPROBLEMS;
 		numCorrect = numRight;
@@ -168,8 +171,23 @@ public class Quiz
 	/**
 	 * return the problem class so that I can use it to display to the screen
 	 */
-	ProblemBase[] getProblems()
+	ProblemBase[] getAllProblems()
 	{
 		return Problems;
+	}
+	
+	ProblemBase[] getIncorrectProblems()
+	{
+		int idx = 0;
+		ProblemBase []Incorrect = new ProblemBase[numIncorrect];
+		for (int loop = 0;loop < MAXPROBLEMS; loop++)
+		{
+			if (Problems[loop].isCorrect() == false)
+			{
+				Incorrect[idx++] = Problems[loop];
+				
+			}				
+		}
+		return Incorrect;
 	}
 }
