@@ -157,9 +157,10 @@ public class Quiz
 		{
 			int first = rnd.nextInt(MAXNUMBERUSED);
 			int second = rnd.nextInt(MAXNUMBERUSED);
-			
+			Problems[X] = new ProblemBase();
 			Problems[X].setLeftSide(first);
 			Problems[X].setRightSide(second);
+			Problems[X].setTotal(first + second);
 		}
 		quizUsedCount++;
 	}
