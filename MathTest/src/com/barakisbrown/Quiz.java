@@ -163,6 +163,7 @@ public class Quiz
 			int total = first + second;
 			Problems[X] = new ProblemBase(first,second,total);
 		}
+		listProblems();
 		quizUsedCount++;
 	}
 	
@@ -187,5 +188,23 @@ public class Quiz
 			}				
 		}
 		return Incorrect;
+	}
+	
+	private void listProblems()
+	{
+		int lside = 0,rside = 0,tot = 0;
+		int numProb = MAXPROBLEMS;
+		
+		for (int loop = 0;loop < numProb; loop++)
+		{
+			lside = Problems[loop].getLeftSide();
+			rside = Problems[loop].getRightSide();
+			tot = Problems[loop].getTotal();
+			// display to the log file from these numbers
+			Log.d("listProblems()","Problem #" + loop + 1);
+			Log.d("listProblems()","LeftSide =" + lside);
+			Log.d("listProblems()","RightSide =" + rside);
+			Log.d("listProblems()","Total =" + tot);
+		}
 	}
 }
