@@ -93,7 +93,7 @@ public class Quiz
 		Log.d("Quiz getFirst()","Index = " + index);
 		Log.d("Quiz getFirst()","MAXPROBLEMS = " + MAXPROBLEMS);
 		// END DEBUG
-		return Problems[0].getLeftSide(); 
+		return Problems[index].getLeftSide(); 
 	}
 	public int getSecond(int index) { return Problems[index].getRightSide(); }
 	public int getAnswer(int index) { return Problems[index].getTotal(); }
