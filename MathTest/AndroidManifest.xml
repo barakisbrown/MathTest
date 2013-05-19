@@ -19,14 +19,6 @@
             </intent-filter>
         </activity>
         <activity 
-            android:name="com.barakisbrown.ScoreDisplayActivity"
-            android:label="Math Test">
-            <intent-filter>
-	            <action android:name="android.intent.action.VIEW"/>
-	            <category android:name="android.intent.category.DEFAULT"/>
-            </intent-filter>
-        </activity> 
-        <activity 
             android:name="com.barakisbrown.ProblemActivity2"
             android:label="Math Test">
             <intent-filter>
@@ -34,7 +26,6 @@
                 <category android:name="android.intent.category.DEFAULT"/>
             </intent-filter>
         </activity>
-        <!-- Another test activity. It might eventually replace ScoreDisplay -->
         <activity
             android:name="com.barakisbrown.ScoreDisplayActivity2"
             android:label="Math Test">
