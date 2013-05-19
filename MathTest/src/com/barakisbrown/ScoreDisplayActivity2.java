@@ -1,9 +1,14 @@
 package com.barakisbrown;
 
+import java.io.File;
+import java.io.FileInputStream;
+import java.io.IOException;
+import java.io.ObjectInputStream;
 import java.util.Iterator;
 
 import android.app.Activity;
 import android.os.Bundle;
+import android.os.Environment;
 import android.util.Log;
 import android.view.View;
 import android.widget.ImageView;
@@ -23,6 +28,7 @@ public class ScoreDisplayActivity2 extends Activity
 	private double totalScore = 0;
 	private int totalCorrect = 0;
 	private int numProblems = 0;
+    private int numIncorrect = 0;
 	private int backKeyPressedTimes = 0;
 	private ProblemHelper helper;
 	
@@ -41,6 +47,7 @@ public class ScoreDisplayActivity2 extends Activity
 		totalScore = getIntent().getDoubleExtra("Score",100.0); 
 		totalCorrect = getIntent().getIntExtra("Correct",5);
 		numProblems = getIntent().getIntExtra("NumProblems",5);
+        numIncorrect = getIntent().getIntExtra("NumIncorrect",0);
 		// manipulate total score where it will show 100% not .100%
 		totalScore = totalScore * 100.00;
 		// NEW SECTION
@@ -77,11 +84,8 @@ public class ScoreDisplayActivity2 extends Activity
 		probTotalScore.addView(iv);
 		//
 		// Code below will be the display of the problems missed.
-		
-		
-		
-		
-	}
+        displayIncorrectProblems();
+    }
 	@Override
 	public void onBackPressed()
 	{
@@ -97,4 +101,24 @@ public class ScoreDisplayActivity2 extends Activity
 			finish();
 		}
 	}
+
+    private void displayIncorrectProblems()
+    {
+        File path = new File(Environment.getExternalStorageDirectory() + "/incorrect_problems");
+        ProblemBase []problems = new ProblemBase[numIncorrect];
+        // working .. this will write all the incorrect problems from disk to memory
+        try
+        {
+            ObjectInputStream ois = new ObjectInputStream(new FileInputStream(path));
+            for (int loop = 0;loop < numIncorrect; loop++)
+                problems[loop] = (ProblemBase)ois.readObject();
+        } catch (IOException e) {
+            e.printStackTrace();
+        } catch (ClassNotFoundException cnf)
+        {
+            cnf.printStackTrace();
+        }
+
+
+    }
 }
