@@ -7,6 +7,9 @@
     <uses-sdk android:minSdkVersion="16"
         	  android:targetSdkVersion="17" />
 
+    <!-- Added capability to write to the SDCARD -->
+    <uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE"></uses-permission>
+
     <application
         android:icon="@drawable/ic_launcher"
         android:allowBackup="true">
