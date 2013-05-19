@@ -1,6 +1,7 @@
 package com.barakisbrown;
 
-import android.util.Log;
+import java.io.Serializable;
+
 /***
  * Instead of storing them as arrays, I will store them in a class. For this application, regardless of the operand, I will always
  * be using two numbers equaling a value. ie. 6 + 4 = 10, 6 * 4 = 24, 6 - 4 = 2, etc.
@@ -8,13 +9,14 @@ import android.util.Log;
  *
  */
 
-public class ProblemBase 
+public class ProblemBase implements Serializable
 {
 
 	private int leftSide, rightSide;
 	private int total;
 	private int guess;
 	private boolean correct;
+    private static final long serialVersionUID = 46543445;
 	
 	public ProblemBase()
 	{
@@ -43,7 +45,7 @@ public class ProblemBase
 	public void setGuess(int userGuessed) 
 	{
 		guess = userGuessed;
-		correct = (guess == total) ? true : false;		
+		correct = (guess == total);
 	}
 	
 	public void setLeftSide(int left)
