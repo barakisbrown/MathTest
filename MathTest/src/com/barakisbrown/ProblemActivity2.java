@@ -1,10 +1,15 @@
 package com.barakisbrown;
 
+import java.io.FileOutputStream;
+import java.io.IOException;
+import java.io.ObjectOutputStream;
+import java.io.File;
 import java.util.Iterator;
 
 import android.app.Activity;
 import android.content.Intent;
 import android.os.Bundle;
+import android.os.Environment;
 import android.text.InputType;
 import android.util.Log;
 import android.view.View;
@@ -117,7 +122,10 @@ public class ProblemActivity2 extends Activity implements OnClickListener
 		}catch(java.lang.NumberFormatException numExcept)
 		{
 			return;
-		}
+		}catch(NullPointerException nullExcept)
+        {
+            return;
+        }
 		try {
 			quiz.setGuess(UserGuessed, numProblem);
 		} catch (Exception e) {
@@ -138,10 +146,12 @@ public class ProblemActivity2 extends Activity implements OnClickListener
 		else
 		{
 			quiz.determineScore();
+            writeProblems();
 			Intent data = new Intent();
 			data.putExtra("Score",quiz.getScore());
 			data.putExtra("Correct",quiz.getNumCorrect());
 			data.putExtra("NumProblems",maxProblem);
+            data.putExtra("NumIncorrect",quiz.getIncorrectProblems().length);
 			this.setResult(RESULT_OK, data);
 			finish();
 		}
@@ -161,5 +171,23 @@ public class ProblemActivity2 extends Activity implements OnClickListener
 			dynLayout.addView(iv);	
 		}
 	}
+
+    private void writeProblems()
+    {
+        ProblemBase []problems = quiz.getIncorrectProblems();
+        int size = problems.length;
+        try
+        {
+            File path = new File(Environment.getExternalStorageDirectory() + "/incorrect_problems");
+            ObjectOutputStream oos = new ObjectOutputStream(new FileOutputStream(path));
+            for (int loop = 0;loop < size; loop++)
+                oos.writeObject(problems[loop]);
+            oos.flush();
+            oos.close();
+        } catch (IOException e) {
+            Log.v("ProblemActivity2","Serialization Error "+e.getMessage());
+            e.printStackTrace();
+        }
+    }
 
 }
