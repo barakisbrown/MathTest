@@ -62,12 +62,14 @@ public class MathTestActivity extends Activity implements OnItemSelectedListener
 				double score = data.getDoubleExtra("Score", 0.0);
 				int correct = data.getIntExtra("Correct",0);
 				int numProblem = data.getIntExtra("NumProblems",0);
+                int numIncorrect = data.getIntExtra("NumIncorrect",0);
 				// now lets call the Activity ScoreDisplayActivity
 				Intent scoreIT = new Intent(this,ScoreDisplayActivity2.class);
 				// store information which ScoreDisplayActivity will need to use.
 				scoreIT.putExtra("Score",score);
 				scoreIT.putExtra("Correct",correct);
 				scoreIT.putExtra("NumProblems",numProblem);
+                scoreIT.putExtra("NumIncorrect",numIncorrect);
 				// Launch the ScoreDisplay Activity
 				startActivityForResult(scoreIT,SCORE_IT_FINISH);
 			}
