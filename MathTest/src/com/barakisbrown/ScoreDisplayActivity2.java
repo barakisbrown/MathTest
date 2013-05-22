@@ -82,9 +82,17 @@ public class ScoreDisplayActivity2 extends Activity
 		iv.setScaleType(ScaleType.FIT_CENTER);
 		iv.setImageResource(R.drawable.percent);
 		probTotalScore.addView(iv);
-		//
-		// Code below will be the display of the problems missed.
-        displayIncorrectProblems();
+		/***
+		 * Once Fixed, I can then remove this comment section. 
+		 * I would like to dynamically either display a layout with the missed problems
+		 * or just end the application like it is currently.
+		*/
+		if (numIncorrect > 0)
+		{
+			//
+			// Code below will be the display of the problems missed.
+	        displayIncorrectProblems();
+		}
     }
 	@Override
 	public void onBackPressed()
