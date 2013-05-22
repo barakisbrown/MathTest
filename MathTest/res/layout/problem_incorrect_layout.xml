@@ -3,18 +3,21 @@
 <GridLayout xmlns:android="http://schemas.android.com/apk/res/android"
              android:layout_width="match_parent"
              android:layout_height="match_parent" android:columnCount="3" android:rowCount="1"
-             android:orientation="vertical" android:id="problem_incorrect_layout">
+             android:orientation="vertical" android:id="@+id/problem_incorrect_layout">
 
     <EditText
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:id="@+id/editText" android:layout_column="0" android:layout_row="0" android:text="Problem #"/>
+            android:id="@+id/editText" android:layout_column="0" android:layout_row="0" android:text="@string/Problem_Column"
+            android:inputType="text"/>   
     <EditText
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:id="@+id/editText2" android:text="Problem Missed"/>
+            android:id="@+id/editText2" android:text="@string/Missed_Column"
+            android:inputType="text"/>
     <EditText
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:id="@+id/editText3" android:text="     Answer    " android:singleLine="false"/>
+            android:id="@+id/editText3" android:text="@string/Answer_Column" android:singleLine="false"
+            android:inputType="text"/>
 </GridLayout>
