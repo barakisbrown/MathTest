@@ -7,10 +7,15 @@ import java.io.ObjectInputStream;
 import java.util.Iterator;
 
 import android.app.Activity;
+import android.content.Context;
 import android.os.Bundle;
 import android.os.Environment;
 import android.util.Log;
+import android.view.LayoutInflater;
 import android.view.View;
+import android.view.ViewGroup;
+import android.view.ViewGroup.LayoutParams;
+import android.widget.GridLayout;
 import android.widget.ImageView;
 import android.widget.ImageView.ScaleType;
 import android.widget.LinearLayout;
@@ -42,6 +47,7 @@ public class ScoreDisplayActivity2 extends Activity
 		final ImageView probTotal = (ImageView)findViewById(R.id.probTotal);
 		final ImageView probCorrect = (ImageView)findViewById(R.id.probCorrect);
 		LinearLayout probTotalScore = (LinearLayout)findViewById(R.id.probTotalScore);
+		LinearLayout mainLayout = (LinearLayout)findViewById(R.id.main);
 		helper = new ProblemHelper();
 		// get values from the intent that called this activity
 		totalScore = getIntent().getDoubleExtra("Score",100.0); 
@@ -82,13 +88,12 @@ public class ScoreDisplayActivity2 extends Activity
 		iv.setScaleType(ScaleType.FIT_CENTER);
 		iv.setImageResource(R.drawable.percent);
 		probTotalScore.addView(iv);
-		/***
-		 * Once Fixed, I can then remove this comment section. 
-		 * I would like to dynamically either display a layout with the missed problems
-		 * or just end the application like it is currently.
-		*/
+		// WORKING
 		if (numIncorrect > 0)
 		{
+			LayoutInflater factory = (LayoutInflater)getSystemService(Context.LAYOUT_INFLATER_SERVICE);
+			View myView = factory.inflate(R.layout.problem_incorrect_layout,null);
+			mainLayout.addView(myView);
 			//
 			// Code below will be the display of the problems missed.
 	        displayIncorrectProblems();
