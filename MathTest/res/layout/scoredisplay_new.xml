@@ -99,10 +99,4 @@
         android:layout_height="wrap_content"
         android:text="" />
        
-   <TextView
-        android:layout_width="fill_parent"
-        android:layout_height="wrap_content"
-        android:text="@string/finished"
-        android:gravity="center" 
-        android:textStyle="bold"/>
 </LinearLayout>
