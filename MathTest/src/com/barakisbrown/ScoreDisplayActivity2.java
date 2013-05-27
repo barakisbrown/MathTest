@@ -36,6 +36,7 @@ public class ScoreDisplayActivity2 extends Activity
     private int numIncorrect = 0;
 	private int backKeyPressedTimes = 0;
 	private ProblemHelper helper;
+    ProblemBase []problems;
 	
 	@Override
 	protected void onCreate(Bundle savedState) 
@@ -91,8 +92,9 @@ public class ScoreDisplayActivity2 extends Activity
 		// WORKING
 		if (numIncorrect > 0)
 		{
+            problems = new ProblemBase[numIncorrect];
 			LayoutInflater factory = (LayoutInflater)getSystemService(Context.LAYOUT_INFLATER_SERVICE);
-			View myView = factory.inflate(R.layout.problem_incorrect_layout,null);
+			GridLayout myView = (GridLayout)factory.inflate(R.layout.problem_incorrect_layout,null);
 			mainLayout.addView(myView);
 			//
 			// Code below will be the display of the problems missed.
@@ -118,7 +120,6 @@ public class ScoreDisplayActivity2 extends Activity
     private void displayIncorrectProblems()
     {
         File path = new File(Environment.getExternalStorageDirectory() + "/incorrect_problems");
-        ProblemBase []problems = new ProblemBase[numIncorrect];
         // working .. this will write all the incorrect problems from disk to memory
         try
         {
