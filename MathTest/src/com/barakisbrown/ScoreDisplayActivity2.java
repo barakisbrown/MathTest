@@ -100,7 +100,16 @@ public class ScoreDisplayActivity2 extends Activity
 			// Code below will load the problems into memory
 	        loadIncorrectProblems();
 	        // now that I have the problem in memory I can now use them
+	        ImageView numProblem;
+	        LinearLayout dispProblem;
+	        LinearLayout dispCorrectAnswer;
 	        
+	        for (int Loop = 0;Loop < numIncorrect;Loop++)
+	        {
+	        	numProblem = getProblemNumber(Loop + 1);
+	        	dispProblem = getProblem(Loop);
+	        	dispCorrectAnswer = getActualAnswer(Loop);
+	        }
 	        
 		}
     }
@@ -135,7 +144,77 @@ public class ScoreDisplayActivity2 extends Activity
         {
             cnf.printStackTrace();
         }
-
-
+    }
+    
+    private ImageView getProblemNumber(int prodNumber)
+    {
+    	ImageView iv = new ImageView(this);
+    	Iterator<Integer> itor = helper.builder(prodNumber);
+    	iv.setImageResource(itor.next());
+    	itor.remove();
+    	return iv;
+    }
+    
+    private LinearLayout getProblem(int probNumber)
+    {
+    	LinearLayout rtnView = new LinearLayout(this);
+    	ImageView iv;
+    	ImageView plusSign;
+    	ImageView equalSign;
+    	// Setup Plus Sign and Equal Side
+		plusSign = new ImageView(this);
+		plusSign.setScaleType(ImageView.ScaleType.FIT_CENTER);
+		plusSign.setImageResource(R.drawable.add);
+		// equal sign
+		equalSign = new ImageView(this);
+		equalSign.setScaleType(ImageView.ScaleType.FIT_CENTER);
+		equalSign.setImageResource(R.drawable.equalsign);
+		// now lets create the first problem dynamically
+    	
+    	Iterator<Integer> itor = helper.builder(problems[probNumber].getLeftSide());
+    	rtnView.setLayoutParams(new LinearLayout.LayoutParams(LayoutParams.WRAP_CONTENT,LayoutParams.WRAP_CONTENT));
+    	// left side of equation
+    	while(itor.hasNext())
+    	{
+    		iv = new ImageView(this);
+    		iv.setImageResource(itor.next());
+    		iv.setScaleType(ImageView.ScaleType.FIT_CENTER);
+    		itor.remove();
+    		rtnView.addView(iv);
+    	}
+    	// add plus sign
+    	rtnView.addView(plusSign);
+    	// right side
+    	itor = helper.builder(problems[probNumber].getRightSide());
+    	while(itor.hasNext())
+    	{
+    		iv = new ImageView(this);
+    		iv.setScaleType(ImageView.ScaleType.FIT_CENTER);
+    		iv.setImageResource(itor.next());
+    		itor.remove();
+    		rtnView.addView(iv);
+    	}
+    	// equal signl
+    	rtnView.addView(equalSign);
+    	// return the view
+    	return rtnView;
+    }
+    
+    private LinearLayout getActualAnswer(int probNumber)
+    {
+    	LinearLayout rtnView = new LinearLayout(this);
+    	ImageView iv;
+    	// build display
+    	Iterator<Integer> itor = helper.builder(problems[probNumber].getTotal());
+    	rtnView.setLayoutParams(new LinearLayout.LayoutParams(LayoutParams.WRAP_CONTENT,LayoutParams.WRAP_CONTENT));
+    	while(itor.hasNext())
+    	{
+    		iv = new ImageView(this);
+    		iv.setImageResource(itor.next());
+    		iv.setScaleType(ImageView.ScaleType.FIT_CENTER);
+    		itor.remove();
+    		rtnView.addView(iv);
+    	}
+    	return rtnView;
     }
 }
