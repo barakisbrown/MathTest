@@ -97,8 +97,11 @@ public class ScoreDisplayActivity2 extends Activity
 			GridLayout myView = (GridLayout)factory.inflate(R.layout.problem_incorrect_layout,null);
 			mainLayout.addView(myView);
 			//
-			// Code below will be the display of the problems missed.
-	        displayIncorrectProblems();
+			// Code below will load the problems into memory
+	        loadIncorrectProblems();
+	        // now that I have the problem in memory I can now use them
+	        
+	        
 		}
     }
 	@Override
@@ -117,7 +120,7 @@ public class ScoreDisplayActivity2 extends Activity
 		}
 	}
 
-    private void displayIncorrectProblems()
+    private void loadIncorrectProblems()
     {
         File path = new File(Environment.getExternalStorageDirectory() + "/incorrect_problems");
         // working .. this will write all the incorrect problems from disk to memory
