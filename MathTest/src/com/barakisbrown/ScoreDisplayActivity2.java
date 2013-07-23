@@ -184,7 +184,7 @@ public class ScoreDisplayActivity2 extends Activity
     		itor.remove();
     		rtnView.addView(iv);
     	}
-    	// equal signl
+    	// equal sign
     	rtnView.addView(equalSign);
     	// return the view
     	return rtnView;
@@ -208,8 +208,21 @@ public class ScoreDisplayActivity2 extends Activity
     	return rtnView;
     }
     
+    /**
+     * Display the wrong problems to the screen. It will do the following:
+     * LOOP
+     *  Display Problem Number Missed
+     *  Display Actual Problem to the screen
+     *  Display Actual Answer to the problem
+     * END LOOP
+     */
     private void displayWrongProblems()
     {
-        
+        for (int loop=0;loop < numIncorrect; loop++)
+        {
+            getProblemNumber(loop);
+            getProblem(loop);
+            getActualAnswer(loop);
+        }
     }
 }
