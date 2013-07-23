@@ -99,18 +99,7 @@ public class ScoreDisplayActivity2 extends Activity
 			//
 			// Code below will load the problems into memory
 	        loadIncorrectProblems();
-	        // now that I have the problem in memory I can now use them
-	        ImageView numProblem;
-	        LinearLayout dispProblem;
-	        LinearLayout dispCorrectAnswer;
-	        
-	        for (int Loop = 0;Loop < numIncorrect;Loop++)
-	        {
-	        	numProblem = getProblemNumber(Loop + 1);
-	        	dispProblem = getProblem(Loop);
-	        	dispCorrectAnswer = getActualAnswer(Loop);
-	        }
-	        
+	        displayWrongProblems();
 		}
     }
 	@Override
@@ -216,5 +205,10 @@ public class ScoreDisplayActivity2 extends Activity
     		rtnView.addView(iv);
     	}
     	return rtnView;
+    }
+    
+    private void displayWrongProblems()
+    {
+        
     }
 }
