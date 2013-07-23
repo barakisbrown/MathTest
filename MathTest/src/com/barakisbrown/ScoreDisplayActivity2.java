@@ -127,6 +127,7 @@ public class ScoreDisplayActivity2 extends Activity
             ObjectInputStream ois = new ObjectInputStream(new FileInputStream(path));
             for (int loop = 0;loop < numIncorrect; loop++)
                 problems[loop] = (ProblemBase)ois.readObject();
+            ois.close();
         } catch (IOException e) {
             e.printStackTrace();
         } catch (ClassNotFoundException cnf)
