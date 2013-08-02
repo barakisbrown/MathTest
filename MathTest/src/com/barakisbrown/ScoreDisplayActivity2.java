@@ -97,9 +97,11 @@ public class ScoreDisplayActivity2 extends Activity
 			GridLayout myView = (GridLayout)factory.inflate(R.layout.problem_incorrect_layout,null);
 			mainLayout.addView(myView);
 			//
-			// Code below will load the problems into memory
+			// Load the problems into memory
 	        loadIncorrectProblems();
-	        displayWrongProblems();
+	        //
+	        // Display them to the screen
+	        displayWrongProblems(myView);
 		}
     }
 	@Override
@@ -216,13 +218,16 @@ public class ScoreDisplayActivity2 extends Activity
      *  Display Actual Answer to the problem
      * END LOOP
      */
-    private void displayWrongProblems()
+    private void displayWrongProblems(GridLayout grid)
     {
+        LinearLayout tempLayout = null;
+        ImageView    tempView = null;
+        
         for (int loop=0;loop < numIncorrect; loop++)
         {
-            getProblemNumber(loop);
-            getProblem(loop);
-            getActualAnswer(loop);
+            tempView    = getProblemNumber(loop);
+            tempLayout  = getProblem(loop);
+            tempLayout  = getActualAnswer(loop);
         }
     }
 }
