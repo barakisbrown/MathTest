@@ -220,14 +220,6 @@ public class ScoreDisplayActivity2 extends Activity
      */
     private void displayWrongProblems(GridLayout grid)
     {
-        LinearLayout tempLayout = null;
-        ImageView    tempView = null;
-        
-        for (int loop=0;loop < numIncorrect; loop++)
-        {
-            tempView    = getProblemNumber(loop);
-            tempLayout  = getProblem(loop);
-            tempLayout  = getActualAnswer(loop);
-        }
+       
     }
 }
