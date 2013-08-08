@@ -95,6 +95,7 @@ public class ScoreDisplayActivity2 extends Activity
             problems = new ProblemBase[numIncorrect];
 			LayoutInflater factory = (LayoutInflater)getSystemService(Context.LAYOUT_INFLATER_SERVICE);
 			GridLayout myView = (GridLayout)factory.inflate(R.layout.problem_incorrect_layout,null);
+			
 			mainLayout.addView(myView);
 			//
 			// Load the problems into memory
