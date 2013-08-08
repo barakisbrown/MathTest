@@ -52,9 +52,10 @@
     	<string name="numb_problems">PROBLEMS GIVEN #</string>
     	<string name="numb_correct">PROBLEMS ANSWERED CORRECTLY #</string>
     	<string name="total_percentage_correct">YOUR TOTAL SCORE IS </string>
-    	<!--  Strings for Gird Layout Below -->
-    	<string name="Problem_Column">Problem #</string>
-		<string name="Missed_Column">Problem Missed</string>
-		<string name="Answer_Column">     Answer    </string>
+    	
+		<!-- Table Layout String Values -->
+		<string name="prob_num">Problem #</string>
+		<string name="actual_prob">Actual Problem</string>
+		<string name="actual_answ">Actual Answer</string>
     	
 </resources>
