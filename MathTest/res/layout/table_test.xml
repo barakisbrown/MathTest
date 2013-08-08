@@ -13,28 +13,54 @@
          	android:layout_width="0dp"
          	android:layout_height="wrap_content"
          	android:layout_weight="1"
-         	android:text = "Problem #">
+         	android:text="@string/prob_num">
        </TextView>
        
+       <View
+            android:layout_width="1dp"
+            android:layout_height="match_parent"
+            android:layout_marginLeft="1dp"
+            android:layout_marginRight="1dp"
+            android:background="#FF909090" />
+        
        <TextView 
          	android:id="@+id/text2"
          	android:layout_width="0dp"
          	android:layout_height="wrap_content"
          	android:layout_weight="1"
          	android:gravity="center"
-         	android:text = "Actual Problem">
+         	android:text="@string/actual_prob">
        </TextView>
        
+       <View
+            android:layout_width="1dp"
+            android:layout_height="match_parent"
+            android:layout_marginLeft="1dp"
+            android:layout_marginRight="1dp"
+            android:background="#FF909090" />
+       
+       
        <TextView 
-         	android:id="@+id/text2"
+         	android:id="@+id/text3"
          	android:layout_width="0dp"
          	android:layout_height="wrap_content"
          	android:layout_weight="1"
          	android:gravity="right"
-         	android:text = "Actual Answer">
+         	android:text="@string/actual_answ">
        </TextView>
     </TableRow>
     
+    <TableRow
+    		android:layout_width="fill_parent"
+    		android:layout_height="wrap_content">
+     <View
+            android:id="@+id/line1"
+            android:layout_width="wrap_content"
+            android:layout_height="1dip"
+            android:layout_weight="1"
+            android:background="#FF909090"
+            android:padding="2dip" /> 
+    </TableRow>
    
  
     
