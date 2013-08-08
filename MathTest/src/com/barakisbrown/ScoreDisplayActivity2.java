@@ -15,10 +15,10 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.view.ViewGroup.LayoutParams;
-import android.widget.GridLayout;
 import android.widget.ImageView;
 import android.widget.ImageView.ScaleType;
 import android.widget.LinearLayout;
+import android.widget.TableLayout;
 import android.widget.TextView;
 import android.widget.Toast;
 import com.barakisbrown.ProblemHelper;
@@ -94,8 +94,7 @@ public class ScoreDisplayActivity2 extends Activity
 		{
             problems = new ProblemBase[numIncorrect];
 			LayoutInflater factory = (LayoutInflater)getSystemService(Context.LAYOUT_INFLATER_SERVICE);
-			GridLayout myView = (GridLayout)factory.inflate(R.layout.problem_incorrect_layout,null);
-			
+			TableLayout myView = (TableLayout)factory.inflate(R.layout.table_test,null);
 			mainLayout.addView(myView);
 			//
 			// Load the problems into memory
@@ -219,7 +218,7 @@ public class ScoreDisplayActivity2 extends Activity
      *  Display Actual Answer to the problem
      * END LOOP
      */
-    private void displayWrongProblems(GridLayout grid)
+    private void displayWrongProblems(TableLayout grid)
     {
        
     }
