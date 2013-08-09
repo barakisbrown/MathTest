@@ -1,27 +1,25 @@
 package com.barakisbrown;
 
-import java.io.File;
-import java.io.FileInputStream;
-import java.io.IOException;
-import java.io.ObjectInputStream;
-import java.util.Iterator;
-
 import android.app.Activity;
 import android.content.Context;
 import android.os.Bundle;
 import android.os.Environment;
 import android.util.Log;
+import android.view.Gravity;
 import android.view.LayoutInflater;
-import android.view.View;
-import android.view.ViewGroup;
 import android.view.ViewGroup.LayoutParams;
 import android.widget.ImageView;
 import android.widget.ImageView.ScaleType;
 import android.widget.LinearLayout;
 import android.widget.TableLayout;
-import android.widget.TextView;
+import android.widget.TableRow;
 import android.widget.Toast;
-import com.barakisbrown.ProblemHelper;
+
+import java.io.File;
+import java.io.FileInputStream;
+import java.io.IOException;
+import java.io.ObjectInputStream;
+import java.util.Iterator;
 
 /***
  * This is the master ScoreDisplayActivity Class.
@@ -128,7 +126,10 @@ public class ScoreDisplayActivity2 extends Activity
         {
             ObjectInputStream ois = new ObjectInputStream(new FileInputStream(path));
             for (int loop = 0;loop < numIncorrect; loop++)
+            {
                 problems[loop] = (ProblemBase)ois.readObject();
+                problems[loop].display();
+            }
             ois.close();
         } catch (IOException e) {
             e.printStackTrace();
@@ -138,13 +139,19 @@ public class ScoreDisplayActivity2 extends Activity
         }
     }
     
-    private ImageView getProblemNumber(int prodNumber)
+    private LinearLayout getProblemNumber(int prodNumber)
     {
+        LinearLayout rtnView = new LinearLayout(this);
+        rtnView.setLayoutParams(new LinearLayout.LayoutParams(LayoutParams.WRAP_CONTENT,LayoutParams.WRAP_CONTENT));
+        
     	ImageView iv = new ImageView(this);
     	Iterator<Integer> itor = helper.builder(prodNumber);
     	iv.setImageResource(itor.next());
     	itor.remove();
-    	return iv;
+    	
+    	rtnView.setGravity(Gravity.LEFT);
+    	rtnView.addView(iv);
+    	return rtnView;
     }
     
     private LinearLayout getProblem(int probNumber)
@@ -189,6 +196,7 @@ public class ScoreDisplayActivity2 extends Activity
     	// equal sign
     	rtnView.addView(equalSign);
     	// return the view
+    	rtnView.setGravity(Gravity.CENTER);
     	return rtnView;
     }
     
@@ -207,6 +215,7 @@ public class ScoreDisplayActivity2 extends Activity
     		itor.remove();
     		rtnView.addView(iv);
     	}
+    	rtnView.setGravity(Gravity.RIGHT);
     	return rtnView;
     }
     
@@ -220,6 +229,7 @@ public class ScoreDisplayActivity2 extends Activity
      */
     private void displayWrongProblems(TableLayout grid)
     {
-       
+        
+        
     }
 }
