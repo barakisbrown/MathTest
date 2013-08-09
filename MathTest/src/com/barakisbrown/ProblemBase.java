@@ -1,5 +1,7 @@
 package com.barakisbrown;
 
+import android.util.Log;
+
 import java.io.Serializable;
 
 /***
@@ -61,5 +63,14 @@ public class ProblemBase implements Serializable
 	public void setTotal(int value)
 	{
 		total = value;
+	}
+	
+	public void display()
+	{
+	    Log.d("Problem Base","LeftSide  = " + leftSide);
+	    Log.d("Problem Base","RightSide = " + rightSide);
+	    Log.d("Problem Base","Total     = " + total);
+	    Log.d("Problem Base","Guess     = " + guess);
+	    Log.d("Problem Base","Correct   = " + correct);
 	}
 }
