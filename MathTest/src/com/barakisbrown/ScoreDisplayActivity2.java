@@ -90,8 +90,6 @@ public class ScoreDisplayActivity2 extends Activity
 		// WORKING
 		if (numIncorrect > 0)
 		{
-			for (int Loop = 0;Loop < 3;Loop ++)
-			{
 				problems = new ProblemBase[numIncorrect];
 				LayoutInflater factory = (LayoutInflater)getSystemService(Context.LAYOUT_INFLATER_SERVICE);
 				TableLayout myView = (TableLayout)factory.inflate(R.layout.table_test,null);
@@ -102,6 +100,7 @@ public class ScoreDisplayActivity2 extends Activity
 				//
 				// Display them to the screen
 				// displayWrongProblems(myView);
+				for (int Loop = 0;Loop < 3;Loop++)
 				{
 					TableRow row = new TableRow(this);
 				    row.setGravity(Gravity.LEFT);
@@ -109,7 +108,6 @@ public class ScoreDisplayActivity2 extends Activity
 				    row.addView(getProblemNumber(Loop + 1));
 				    myView.addView(row);
 				}
-			}
 		}
     }
 	@Override
