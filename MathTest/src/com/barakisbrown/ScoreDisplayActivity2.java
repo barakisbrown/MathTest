@@ -93,7 +93,6 @@ public class ScoreDisplayActivity2 extends Activity
 				problems = new ProblemBase[numIncorrect];
 				LayoutInflater factory = (LayoutInflater)getSystemService(Context.LAYOUT_INFLATER_SERVICE);
 				TableLayout myView = (TableLayout)factory.inflate(R.layout.table_test,null);
-				mainLayout.addView(myView);
 				//
 				// Load the problems into memory
 				loadIncorrectProblems();
@@ -103,11 +102,10 @@ public class ScoreDisplayActivity2 extends Activity
 				for (int Loop = 0;Loop < 3;Loop++)
 				{
 					TableRow row = new TableRow(this);
-				    row.setGravity(Gravity.LEFT);
-				    row.setLayoutParams(new TableRow.LayoutParams(LayoutParams.MATCH_PARENT,LayoutParams.WRAP_CONTENT));
 				    row.addView(getProblemNumber(Loop + 1));
-				    myView.addView(row);
+				    myView.addView(row,new TableLayout.LayoutParams(TableLayout.LayoutParams.MATCH_PARENT,TableLayout.LayoutParams.WRAP_CONTENT));
 				}
+				mainLayout.addView(myView);
 		}
     }
 	@Override
@@ -150,7 +148,7 @@ public class ScoreDisplayActivity2 extends Activity
     private LinearLayout getProblemNumber(int prodNumber)
     {
         LinearLayout rtnView = new LinearLayout(this);
-        rtnView.setLayoutParams(new LinearLayout.LayoutParams(LayoutParams.WRAP_CONTENT,LayoutParams.WRAP_CONTENT));
+        rtnView.setLayoutParams(new LinearLayout.LayoutParams(LayoutParams.MATCH_PARENT,LayoutParams.WRAP_CONTENT));
         
     	ImageView iv = new ImageView(this);
     	Iterator<Integer> itor = helper.builder(prodNumber);
