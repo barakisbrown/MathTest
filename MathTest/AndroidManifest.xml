@@ -22,7 +22,7 @@
             </intent-filter>
         </activity>
         <activity 
-            android:name="com.barakisbrown.ProblemActivity2"
+            android:name=".ProblemActivity2"
             android:label="Math Test">
             <intent-filter>
                 <action android:name="android.intent.action.VIEW"/>
@@ -30,7 +30,7 @@
             </intent-filter>
         </activity>
         <activity
-            android:name="com.barakisbrown.ScoreDisplayActivity2"
+            android:name=".ScoreDisplayActivity2"
             android:label="Math Test">
             <intent-filter>
                 <action android:name="android.intent.action.VIEW"/>
