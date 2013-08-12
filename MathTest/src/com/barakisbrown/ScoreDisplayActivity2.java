@@ -2,6 +2,7 @@ package com.barakisbrown;
 
 import android.app.Activity;
 import android.content.Context;
+import android.graphics.Color;
 import android.os.Bundle;
 import android.os.Environment;
 import android.util.Log;
@@ -13,6 +14,7 @@ import android.widget.ImageView.ScaleType;
 import android.widget.LinearLayout;
 import android.widget.TableLayout;
 import android.widget.TableRow;
+import android.widget.TextView;
 import android.widget.Toast;
 
 import java.io.File;
@@ -92,20 +94,33 @@ public class ScoreDisplayActivity2 extends Activity
 		{
 				problems = new ProblemBase[numIncorrect];
 				LayoutInflater factory = (LayoutInflater)getSystemService(Context.LAYOUT_INFLATER_SERVICE);
-				TableLayout myView = (TableLayout)factory.inflate(R.layout.table_test,null);
-				//
-				// Load the problems into memory
-				loadIncorrectProblems();
-				//
-				// Display them to the screen
-				// displayWrongProblems(myView);
-				for (int Loop = 0;Loop < 3;Loop++)
-				{
-					TableRow row = new TableRow(this);
-				    row.addView(getProblemNumber(Loop + 1));
-				    myView.addView(row,new TableLayout.LayoutParams(TableLayout.LayoutParams.MATCH_PARENT,TableLayout.LayoutParams.WRAP_CONTENT));
-				}
-				mainLayout.addView(myView);
+				TableLayout tl = (TableLayout)factory.inflate(R.layout.table_test,null);
+				TableRow tr = new TableRow(this);
+				LayoutParams lp = new LayoutParams(LayoutParams.MATCH_PARENT,LayoutParams.WRAP_CONTENT);
+				tr.setLayoutParams(lp);
+				// add stuff
+				TextView tvLeft = new TextView(this);
+				tvLeft.setLayoutParams(lp);
+				tvLeft.setBackgroundColor(Color.WHITE);
+				tvLeft.setText("OMG");
+				TextView tvCenter = new TextView(this);
+				tvCenter.setLayoutParams(lp);
+				tvCenter.setBackgroundColor(Color.WHITE);
+				tvCenter.setText("IT");
+				TextView tvRight = new TextView(this);
+				tvRight.setLayoutParams(lp);
+				tvRight.setBackgroundColor(Color.WHITE);
+				tvRight.setText("WORKS");
+				// add views
+				tr.addView(tvLeft);
+				tr.addView(tvCenter);
+				tr.addView(tvRight);
+				tl.addView(tr,new TableLayout.LayoutParams(LayoutParams.MATCH_PARENT,LayoutParams.WRAP_CONTENT));
+				
+				
+				
+				
+			
 		}
     }
 	@Override
