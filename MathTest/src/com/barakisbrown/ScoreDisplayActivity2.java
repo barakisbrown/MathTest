@@ -90,16 +90,26 @@ public class ScoreDisplayActivity2 extends Activity
 		// WORKING
 		if (numIncorrect > 0)
 		{
-            problems = new ProblemBase[numIncorrect];
-			LayoutInflater factory = (LayoutInflater)getSystemService(Context.LAYOUT_INFLATER_SERVICE);
-			TableLayout myView = (TableLayout)factory.inflate(R.layout.table_test,null);
-			mainLayout.addView(myView);
-			//
-			// Load the problems into memory
-	        loadIncorrectProblems();
-	        //
-	        // Display them to the screen
-	        displayWrongProblems(myView);
+			for (int Loop = 0;Loop < 3;Loop ++)
+			{
+				problems = new ProblemBase[numIncorrect];
+				LayoutInflater factory = (LayoutInflater)getSystemService(Context.LAYOUT_INFLATER_SERVICE);
+				TableLayout myView = (TableLayout)factory.inflate(R.layout.table_test,null);
+				mainLayout.addView(myView);
+				//
+				// Load the problems into memory
+				loadIncorrectProblems();
+				//
+				// Display them to the screen
+				// displayWrongProblems(myView);
+				{
+					TableRow row = new TableRow(this);
+				    row.setGravity(Gravity.LEFT);
+				    row.setLayoutParams(new TableRow.LayoutParams(LayoutParams.MATCH_PARENT,LayoutParams.WRAP_CONTENT));
+				    row.addView(getProblemNumber(Loop + 1));
+				    myView.addView(row);
+				}
+			}
 		}
     }
 	@Override
