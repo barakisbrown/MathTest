@@ -178,6 +178,7 @@ public class ProblemActivity2 extends Activity implements OnClickListener
         int size = problems.length;
         try
         {
+        	String location = Environment.getExternalStorageDirectory() + "/incorrect_problems";
             File path = new File(Environment.getExternalStorageDirectory() + "/incorrect_problems");
             ObjectOutputStream oos = new ObjectOutputStream(new FileOutputStream(path));
             for (int loop = 0;loop < size; loop++)
