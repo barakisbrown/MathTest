@@ -1,13 +1,11 @@
 package com.barakisbrown;
 
 import android.app.Activity;
-import android.content.Context;
 import android.graphics.Color;
 import android.os.Bundle;
 import android.os.Environment;
 import android.util.Log;
 import android.view.Gravity;
-import android.view.LayoutInflater;
 import android.view.ViewGroup.LayoutParams;
 import android.widget.ImageView;
 import android.widget.ImageView.ScaleType;
@@ -93,8 +91,7 @@ public class ScoreDisplayActivity2 extends Activity
 		if (numIncorrect > 0)
 		{
 				problems = new ProblemBase[numIncorrect];
-				LayoutInflater factory = (LayoutInflater)getSystemService(Context.LAYOUT_INFLATER_SERVICE);
-				TableLayout tl = (TableLayout)factory.inflate(R.layout.table_test,null);
+				TableLayout tl = (TableLayout)getLayoutInflater().inflate(R.layout.table_test,mainLayout,false);
 				TableRow tr = new TableRow(this);
 				LayoutParams lp = new LayoutParams(LayoutParams.MATCH_PARENT,LayoutParams.WRAP_CONTENT);
 				tr.setLayoutParams(lp);
@@ -116,13 +113,12 @@ public class ScoreDisplayActivity2 extends Activity
 				tr.addView(tvCenter);
 				tr.addView(tvRight);
 				tl.addView(tr,new TableLayout.LayoutParams(LayoutParams.MATCH_PARENT,LayoutParams.WRAP_CONTENT));
-				
-				
-				
-				
+				mainLayout.addView(tl);		
 			
 		}
-    }
+	}
+	
+	
 	@Override
 	public void onBackPressed()
 	{
@@ -138,7 +134,8 @@ public class ScoreDisplayActivity2 extends Activity
 			finish();
 		}
 	}
-
+	
+	
     private void loadIncorrectProblems()
     {
         File path = new File(Environment.getExternalStorageDirectory() + "/incorrect_problems");
