@@ -56,7 +56,7 @@ public class MathTestActivity extends Activity implements OnItemSelectedListener
 		{
 		case SCORE_IT:
 		{
-			if (resultCode != Activity.RESULT_OK)
+			if (resultCode == Activity.RESULT_OK)
 			{
 				
 				double score = data.getDoubleExtra("Score", 0.0);
@@ -73,7 +73,7 @@ public class MathTestActivity extends Activity implements OnItemSelectedListener
 				// Launch the ScoreDisplay Activity
 				startActivityForResult(scoreIT,SCORE_IT_FINISH);
 			}
-			else if (resultCode == Activity.RESULT_OK)
+			else if (resultCode != Activity.RESULT_OK)
 			{
 			    Intent test = new Intent(this,TableTestActivity.class);
 			    startActivityForResult(test,SCORE_IT_FINISH);
