@@ -2,6 +2,7 @@ package com.barakisbrown;
 
 import android.app.Activity;
 import android.graphics.Color;
+import android.graphics.drawable.GradientDrawable.Orientation;
 import android.os.Bundle;
 import android.os.Environment;
 import android.util.Log;
@@ -91,21 +92,9 @@ public class ScoreDisplayActivity2 extends Activity
 		if (numIncorrect > 0)
 		{
 				problems = new ProblemBase[numIncorrect];
+				loadIncorrectProblems();
 				TableLayout tl = (TableLayout)findViewById(R.id.tableID);
-				TableRow tr = new TableRow(this);
-				LayoutParams lp = new LayoutParams(LayoutParams.MATCH_PARENT,LayoutParams.WRAP_CONTENT);
-				TableRow.LayoutParams trip = new TableRow.LayoutParams();
-				tr.setLayoutParams(lp);
-				// add stuff
-				TextView tvLeft = new TextView(this);
-				tvLeft.setLayoutParams(lp);
-				tvLeft.setBackgroundColor(Color.WHITE);
-				tvLeft.setText("OMG");
-				// add views
-				trip.span = 3;
-				tr.setLayoutParams(trip);
-				tr.addView(tvLeft);
-				tl.addView(tr,new TableLayout.LayoutParams(LayoutParams.MATCH_PARENT,LayoutParams.WRAP_CONTENT));
+				displayWrongProblems(tl);
 		}
 	}
 	
@@ -150,8 +139,9 @@ public class ScoreDisplayActivity2 extends Activity
     
     private LinearLayout getProblemNumber(int prodNumber)
     {
+        TableRow.LayoutParams rowlp = new TableRow.LayoutParams(new TableRow.LayoutParams(LayoutParams.MATCH_PARENT,LayoutParams.WRAP_CONTENT));
         LinearLayout rtnView = new LinearLayout(this);
-        rtnView.setLayoutParams(new LinearLayout.LayoutParams(LayoutParams.MATCH_PARENT,LayoutParams.WRAP_CONTENT));
+        rtnView.setLayoutParams(rowlp);
         
     	ImageView iv = new ImageView(this);
     	Iterator<Integer> itor = helper.builder(prodNumber);
@@ -165,6 +155,7 @@ public class ScoreDisplayActivity2 extends Activity
     
     private LinearLayout getProblem(int probNumber)
     {
+        TableRow.LayoutParams rowlp = new TableRow.LayoutParams(new TableRow.LayoutParams(LayoutParams.MATCH_PARENT,LayoutParams.WRAP_CONTENT));
     	LinearLayout rtnView = new LinearLayout(this);
     	ImageView iv;
     	ImageView plusSign;
@@ -180,7 +171,7 @@ public class ScoreDisplayActivity2 extends Activity
 		// now lets create the first problem dynamically
     	
     	Iterator<Integer> itor = helper.builder(problems[probNumber].getLeftSide());
-    	rtnView.setLayoutParams(new LinearLayout.LayoutParams(LayoutParams.WRAP_CONTENT,LayoutParams.WRAP_CONTENT));
+    	rtnView.setLayoutParams(rowlp);
     	// left side of equation
     	while(itor.hasNext())
     	{
@@ -211,11 +202,12 @@ public class ScoreDisplayActivity2 extends Activity
     
     private LinearLayout getActualAnswer(int probNumber)
     {
+        TableRow.LayoutParams rowlp = new TableRow.LayoutParams(new TableRow.LayoutParams(LayoutParams.MATCH_PARENT,LayoutParams.WRAP_CONTENT));
     	LinearLayout rtnView = new LinearLayout(this);
     	ImageView iv;
     	// build display
     	Iterator<Integer> itor = helper.builder(problems[probNumber].getTotal());
-    	rtnView.setLayoutParams(new LinearLayout.LayoutParams(LayoutParams.WRAP_CONTENT,LayoutParams.WRAP_CONTENT));
+    	rtnView.setLayoutParams(rowlp);
     	while(itor.hasNext())
     	{
     		iv = new ImageView(this);
@@ -236,8 +228,22 @@ public class ScoreDisplayActivity2 extends Activity
      *  Display Actual Answer to the problem
      * END LOOP
      */
-    private void displayWrongProblems(TableLayout grid)
+    private void displayWrongProblems(TableLayout TL)
     {
+        TableRow.LayoutParams rowlp = new TableRow.LayoutParams(new TableRow.LayoutParams(LayoutParams.MATCH_PARENT,LayoutParams.WRAP_CONTENT));
+        int Loop = 0;
+        // Problem Number
+        TableRow row = new TableRow(this);
+        LinearLayout llrow = new LinearLayout(this);
+        llrow.setOrientation(LinearLayout.HORIZONTAL);
+        llrow.setLayoutParams(rowlp);
+        llrow.addView(getProblemNumber(Loop + 1));
+        // Actual Problem
+        llrow.addView(getProblem(Loop));
+        // Actual Answer
+        llrow.addView(getActualAnswer(Loop));
+        row.addView(llrow);
+        TL.addView(row);
         
         
     }
