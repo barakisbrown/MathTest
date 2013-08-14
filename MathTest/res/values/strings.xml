@@ -1,30 +1,27 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
-    
+
     <string name="app_name">MathTest</string>
     <string name="Score_Header">CONGRATULATION:</string>
-    <string name="Total_Score_2">
-    		Problem Total #%1$d\n		Total Correct #%2$d\n
-    		You Scored %3$f%%!
-    </string>
+    <string name="Total_Score_2">    		Problem Total #%1$d\n		Total Correct #%2$d\n
+    		You Scored %3$f%%!</string>
     <string name="ProblemLabel">Problem %1$d of %2$d</string>
-    
+
     <style name="ButtonText">
-	    <item name="android:layout_width">fill_parent</item>
-	    <item name="android:layout_height">wrap_content</item>
-	    <item name="android:textColor">#ffffff</item>
-	    <item name="android:gravity">center</item>
-	    <item name="android:layout_margin">3dp</item>
-	    <item name="android:textSize">20sp</item>
-	    <item name="android:textStyle">bold</item>
-	    <item name="android:shadowColor">#000000</item>
-	    <item name="android:shadowDx">1</item>
-	    <item name="android:shadowDy">1</item>
-	    <item name="android:shadowRadius">2</item>
+        <item name="android:layout_width">fill_parent</item>
+        <item name="android:layout_height">wrap_content</item>
+        <item name="android:textColor">#ffffff</item>
+        <item name="android:gravity">center</item>
+        <item name="android:layout_margin">3dp</item>
+        <item name="android:textSize">20sp</item>
+        <item name="android:textStyle">bold</item>
+        <item name="android:shadowColor">#000000</item>
+        <item name="android:shadowDx">1</item>
+        <item name="android:shadowDy">1</item>
+        <item name="android:shadowRadius">2</item>
     </style>
-    
+
     <string name="welcome_msg">This simple quiz will test your math skills.\nPlease select how many of problems(Max of 10)\nOnce the quiz is done, it will display your score and grade.</string>
-    
     <string name="begin_quiz">Begin Quiz</string>
     <string name="choice_prompt">Please Select Number of Problems</string>
 
@@ -41,21 +38,25 @@
         <item>Nine</item>
         <item>Ten</item>
     </string-array>
-    
-    	<!-- Image Description Section -->
-    	<string name="finished">Finished..To take another quiz press back twice</string>
-    	<string name="image_desc">Image of a Number from 0 - 9</string>
-    	<string name="plus_image_dec">Image of a plus sign</string>
-    	<string name="equal_image_desc">Image of an Equal Sign</string>
-    	<string name="submit_answer_text">Submit Answer</string>
-    	<!-- Test Section Below -->
-    	<string name="numb_problems">PROBLEMS GIVEN #</string>
-    	<string name="numb_correct">PROBLEMS ANSWERED CORRECTLY #</string>
-    	<string name="total_percentage_correct">YOUR TOTAL SCORE IS </string>
-    	
-		<!-- Table Layout String Values -->
-		<string name="prob_num">Problem #</string>
-		<string name="actual_prob">Actual Problem</string>
-		<string name="actual_answ">Actual Answer</string>
-    	
+
+    <!-- Image Description Section -->
+    <string name="finished">Finished..To take another quiz press back twice</string>
+    <string name="image_desc">Image of a Number from 0 - 9</string>
+    <string name="plus_image_dec">Image of a plus sign</string>
+    <string name="equal_image_desc">Image of an Equal Sign</string>
+    <string name="submit_answer_text">Submit Answer</string>
+    <!-- Test Section Below -->
+    <string name="numb_problems">PROBLEMS GIVEN #</string>
+    <string name="numb_correct">PROBLEMS ANSWERED CORRECTLY #</string>
+    <string name="total_percentage_correct">YOUR TOTAL SCORE IS </string>
+
+    <!-- Table Layout String Values -->
+    <string name="prob_num">Problem #</string>
+    <string name="actual_prob">Actual Problem</string>
+    <string name="actual_answ">Actual Answer</string>
+    <!--  Test Strings [Can be removed later before merging with Master Branch] -->
+    <string name="title_activity_table_test">TableTestActivity</string>
+    <string name="action_settings">Settings</string>
+    <string name="hello_world">Hello world!</string>
+
 </resources>
