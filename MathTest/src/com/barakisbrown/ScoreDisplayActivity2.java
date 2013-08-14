@@ -91,30 +91,21 @@ public class ScoreDisplayActivity2 extends Activity
 		if (numIncorrect > 0)
 		{
 				problems = new ProblemBase[numIncorrect];
-				TableLayout tl = (TableLayout)getLayoutInflater().inflate(R.layout.table_test,mainLayout,false);
+				TableLayout tl = (TableLayout)findViewById(R.id.tableID);
 				TableRow tr = new TableRow(this);
 				LayoutParams lp = new LayoutParams(LayoutParams.MATCH_PARENT,LayoutParams.WRAP_CONTENT);
+				TableRow.LayoutParams trip = new TableRow.LayoutParams();
 				tr.setLayoutParams(lp);
 				// add stuff
 				TextView tvLeft = new TextView(this);
 				tvLeft.setLayoutParams(lp);
 				tvLeft.setBackgroundColor(Color.WHITE);
 				tvLeft.setText("OMG");
-				TextView tvCenter = new TextView(this);
-				tvCenter.setLayoutParams(lp);
-				tvCenter.setBackgroundColor(Color.WHITE);
-				tvCenter.setText("IT");
-				TextView tvRight = new TextView(this);
-				tvRight.setLayoutParams(lp);
-				tvRight.setBackgroundColor(Color.WHITE);
-				tvRight.setText("WORKS");
 				// add views
+				trip.span = 3;
+				tr.setLayoutParams(trip);
 				tr.addView(tvLeft);
-				tr.addView(tvCenter);
-				tr.addView(tvRight);
 				tl.addView(tr,new TableLayout.LayoutParams(LayoutParams.MATCH_PARENT,LayoutParams.WRAP_CONTENT));
-				mainLayout.addView(tl);		
-			
 		}
 	}
 	
