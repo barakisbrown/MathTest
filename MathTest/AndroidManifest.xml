@@ -4,39 +4,48 @@
     android:versionCode="1"
     android:versionName="1.0" >
 
-    <uses-sdk android:minSdkVersion="16"
-        	  android:targetSdkVersion="17" />
+    <uses-sdk
+        android:minSdkVersion="16"
+        android:targetSdkVersion="17" />
 
     <!-- Added capability to write to the SDCARD -->
-    <uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE"></uses-permission>
+    <uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE" >
+    </uses-permission>
 
     <application
-        android:icon="@drawable/ic_launcher"
-        android:allowBackup="true">
+        android:allowBackup="true"
+        android:icon="@drawable/ic_launcher" >
         <activity
-            android:name=".MathTestActivity" 
-            android:label="Math Test">
+            android:name="com.barakisbrown.MathTestActivity"
+            android:label="Math Test" >
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
-				<category android:name="android.intent.category.LAUNCHER" />
-            </intent-filter>
-        </activity>
-        <activity 
-            android:name=".ProblemActivity2"
-            android:label="Math Test">
-            <intent-filter>
-                <action android:name="android.intent.action.VIEW"/>
-                <category android:name="android.intent.category.DEFAULT"/>
+
+                <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
         <activity
-            android:name=".ScoreDisplayActivity2"
-            android:label="Math Test">
+            android:name="com.barakisbrown.ProblemActivity2"
+            android:label="Math Test" >
             <intent-filter>
-                <action android:name="android.intent.action.VIEW"/>
-                <category android:name="android.intent.category.DEFAULT"/>
+                <action android:name="android.intent.action.VIEW" />
+
+                <category android:name="android.intent.category.DEFAULT" />
             </intent-filter>
         </activity>
-   </application>
+        <activity
+            android:name="com.barakisbrown.ScoreDisplayActivity2"
+            android:label="Math Test" >
+            <intent-filter>
+                <action android:name="android.intent.action.VIEW" />
+
+                <category android:name="android.intent.category.DEFAULT" />
+            </intent-filter>
+        </activity>
+        <activity
+            android:name="com.barakisbrown.TableTestActivity"
+            android:label="@string/title_activity_table_test" >
+        </activity>
+    </application>
 
 </manifest>
