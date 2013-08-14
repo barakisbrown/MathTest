@@ -100,4 +100,5 @@
         android:layout_height="wrap_content"
         android:text="" />
        
+   <include layout="@layout/table_test"/>
 </LinearLayout>
