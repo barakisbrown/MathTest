@@ -8,9 +8,14 @@ import android.util.Log;
 import android.view.Gravity;
 import android.view.Menu;
 import android.view.ViewGroup.LayoutParams;
+import android.widget.ImageView;
+import android.widget.LinearLayout;
 import android.widget.TableLayout;
 import android.widget.TableRow;
 import android.widget.TextView;
+import com.barakisbrown.ProblemHelper;
+
+import java.util.Iterator;
 
 public class TableTestActivity extends Activity {
 
@@ -50,6 +55,8 @@ public class TableTestActivity extends Activity {
         tl.addView(row1);
         tl.addView(row2);
         Log.d("TableTestActivity","Number of Children = " + tl.getChildCount());
+        tl.addView(testDisplay());
+        Log.d("TableTestActivity","Number of Children = " + tl.getChildCount());
     }
 
     @Override
@@ -58,5 +65,35 @@ public class TableTestActivity extends Activity {
         getMenuInflater().inflate(R.menu.table_test, menu);
         return true;
     }
-
+    
+    LinearLayout testDisplay()
+    {
+        TableRow.LayoutParams rowlp = new TableRow.LayoutParams(new LayoutParams(LayoutParams.MATCH_PARENT,LayoutParams.WRAP_CONTENT));
+        LinearLayout rtnView = new LinearLayout(this);
+        ProblemHelper helper = new ProblemHelper();
+        
+        int numberToDisplay = 1000;
+        
+        ImageView iv;
+        Iterator<Integer> itor = helper.builder(numberToDisplay);
+        // set Layout for the LinearLayout Here
+        rtnView.setLayoutParams(rowlp);
+        // loop thru iterator and display items
+        while(itor.hasNext())
+        {
+            iv = new ImageView(this);
+            iv.setScaleType(ImageView.ScaleType.FIT_CENTER);
+            iv.setImageResource(itor.next());
+            itor.remove();
+            rtnView.addView(iv);  
+        }
+        return rtnView;
+    }
+    
+    
+    
+    
+    
+    
+    
 }
