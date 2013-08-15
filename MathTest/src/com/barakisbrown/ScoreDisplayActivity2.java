@@ -141,6 +141,7 @@ public class ScoreDisplayActivity2 extends Activity
         TableRow.LayoutParams rowlp = new TableRow.LayoutParams(new TableRow.LayoutParams(LayoutParams.MATCH_PARENT,LayoutParams.WRAP_CONTENT));
         LinearLayout rtnView = new LinearLayout(this);
         rtnView.setLayoutParams(rowlp);
+        rtnView.setOrientation(LinearLayout.HORIZONTAL);
         
     	ImageView iv = new ImageView(this);
     	Iterator<Integer> itor = helper.builder(prodNumber);
@@ -156,6 +157,7 @@ public class ScoreDisplayActivity2 extends Activity
     {
         TableRow.LayoutParams rowlp = new TableRow.LayoutParams(new TableRow.LayoutParams(LayoutParams.MATCH_PARENT,LayoutParams.WRAP_CONTENT));
     	LinearLayout rtnView = new LinearLayout(this);
+    	
     	ImageView iv;
     	ImageView plusSign;
     	ImageView equalSign;
@@ -171,6 +173,7 @@ public class ScoreDisplayActivity2 extends Activity
     	
     	Iterator<Integer> itor = helper.builder(problems[probNumber].getLeftSide());
     	rtnView.setLayoutParams(rowlp);
+    	rtnView.setOrientation(LinearLayout.HORIZONTAL);
     	// left side of equation
     	while(itor.hasNext())
     	{
@@ -207,6 +210,7 @@ public class ScoreDisplayActivity2 extends Activity
     	// build display
     	Iterator<Integer> itor = helper.builder(problems[probNumber].getTotal());
     	rtnView.setLayoutParams(rowlp);
+    	rtnView.setOrientation(LinearLayout.HORIZONTAL);
     	while(itor.hasNext())
     	{
     		iv = new ImageView(this);
@@ -229,20 +233,11 @@ public class ScoreDisplayActivity2 extends Activity
      */
     private void displayWrongProblems(TableLayout TL)
     {
-        TableRow.LayoutParams rowlp = new TableRow.LayoutParams(new TableRow.LayoutParams(LayoutParams.MATCH_PARENT,LayoutParams.WRAP_CONTENT));
-        int Loop = 0;
-        // Problem Number
+        TableRow.LayoutParams rowlp = new TableRow.LayoutParams(new TableRow.LayoutParams(LayoutParams.MATCH_PARENT,LayoutParams.MATCH_PARENT));
         TableRow row = new TableRow(this);
-        LinearLayout llrow = new LinearLayout(this);
-        llrow.setOrientation(LinearLayout.HORIZONTAL);
-        llrow.setLayoutParams(rowlp);
-        llrow.addView(getProblemNumber(Loop + 1));
-        // Actual Problem
-        llrow.addView(getProblem(Loop));
-        // Actual Answer
-        llrow.addView(getActualAnswer(Loop));
-        row.addView(llrow);
+        row.addView(getProblem(0));
         TL.addView(row);
+        
         
         
     }
