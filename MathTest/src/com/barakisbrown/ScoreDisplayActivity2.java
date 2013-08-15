@@ -47,7 +47,6 @@ public class ScoreDisplayActivity2 extends Activity
 		final ImageView probTotal = (ImageView)findViewById(R.id.probTotal);
 		final ImageView probCorrect = (ImageView)findViewById(R.id.probCorrect);
 		LinearLayout probTotalScore = (LinearLayout)findViewById(R.id.probTotalScore);
-		LinearLayout mainLayout = (LinearLayout)findViewById(R.id.main);
 		helper = new ProblemHelper();
 		// get values from the intent that called this activity
 		totalScore = getIntent().getDoubleExtra("Score",100.0); 
