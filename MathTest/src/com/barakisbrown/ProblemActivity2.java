@@ -24,10 +24,8 @@ import android.widget.TextView;
 public class ProblemActivity2 extends Activity implements OnClickListener 
 {
 	// GUI RELATED
-	private ProblemHelper helper;
+	private ProblemBuilder helper;
 	private LinearLayout dynLayout;
-	private ImageView plusSign;
-	private ImageView equalSign;
 	private EditText guessBox;
 	private Button submit;
 	private TextView problemNumberTxt;
@@ -64,7 +62,7 @@ public class ProblemActivity2 extends Activity implements OnClickListener
 			e.printStackTrace();
 		}
 		problemLabelString = getResources().getString(R.string.ProblemLabel);
-		helper = new ProblemHelper();
+		helper = new ProblemBuilder(this);
 		// Init GUI Controls
 		// Setup Width/Height
 		dynLayout = (LinearLayout)findViewById(R.id.problemLayout);
@@ -73,14 +71,6 @@ public class ProblemActivity2 extends Activity implements OnClickListener
 		problemNumberTxt = (TextView)findViewById(R.id.problemLabel);
 		submit = (Button)findViewById(R.id.SubmitProblem);
 		submit.setOnClickListener(this);
-		// Setup Plus Sign and Equal Side
-		plusSign = new ImageView(this);
-		plusSign.setScaleType(ImageView.ScaleType.FIT_CENTER);
-		plusSign.setImageResource(R.drawable.add);
-		// equal sign
-		equalSign = new ImageView(this);
-		equalSign.setScaleType(ImageView.ScaleType.FIT_CENTER);
-		equalSign.setImageResource(R.drawable.equalsign);
 		// now lets create the first problem dynamically
 		displayLayout();
 	
@@ -90,6 +80,9 @@ public class ProblemActivity2 extends Activity implements OnClickListener
 	{
 		leftSide = quiz.getFirst(numProblem);
 		rightSide = quiz.getSecond(numProblem);
+	    // Modification here with my new class
+		helper.setLeftSide(leftSide);
+		helper.setRightSide(rightSide);
 		// Lets display the problem number
 		displayString = String.format(problemLabelString, numProblem + 1,maxProblem);
 		problemNumberTxt.setText(displayString);
@@ -98,15 +91,9 @@ public class ProblemActivity2 extends Activity implements OnClickListener
 		blank.setText("          ");
 		// begin adding controls
 		dynLayout.addView(blank);
-		// LeftSide of Problem
-		addToLayout(leftSide);
-		// PlusSign
-		dynLayout.addView(plusSign);
-		// RightSide of Equation
-		addToLayout(rightSide);
-		// EqualSign
-		dynLayout.addView(equalSign);
-		// dispaly GuessBox
+		// Modification here with my new class
+		dynLayout.addView(helper.buildProblem());
+		// display GuessBox
 		guessBox = new EditText(this);
 		guessBox.setInputType(InputType.TYPE_CLASS_NUMBER);
 		guessBox.requestFocus();
@@ -157,21 +144,6 @@ public class ProblemActivity2 extends Activity implements OnClickListener
 		}
 	}
 	
-	private void addToLayout(int item)
-	{
-		ImageView iv;
-		Iterator<Integer> itor = helper.builder(item);
-		// loop thru iterator and display items
-		while(itor.hasNext())
-		{
-			iv = new ImageView(this);
-			iv.setScaleType(ImageView.ScaleType.FIT_CENTER);
-			iv.setImageResource(itor.next());
-			itor.remove();
-			dynLayout.addView(iv);	
-		}
-	}
-
     private void writeProblems()
     {
         ProblemBase []problems = quiz.getIncorrectProblems();
@@ -179,7 +151,7 @@ public class ProblemActivity2 extends Activity implements OnClickListener
         try
         {
         	String location = Environment.getExternalStorageDirectory() + "/incorrect_problems";
-            File path = new File(Environment.getExternalStorageDirectory() + "/incorrect_problems");
+            File path = new File(location);
             ObjectOutputStream oos = new ObjectOutputStream(new FileOutputStream(path));
             for (int loop = 0;loop < size; loop++)
                 oos.writeObject(problems[loop]);
