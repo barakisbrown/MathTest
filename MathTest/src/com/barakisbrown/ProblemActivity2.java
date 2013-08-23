@@ -1,11 +1,5 @@
 package com.barakisbrown;
 
-import java.io.FileOutputStream;
-import java.io.IOException;
-import java.io.ObjectOutputStream;
-import java.io.File;
-import java.util.Iterator;
-
 import android.app.Activity;
 import android.content.Intent;
 import android.os.Bundle;
@@ -17,9 +11,13 @@ import android.view.View.OnClickListener;
 import android.view.ViewGroup.LayoutParams;
 import android.widget.Button;
 import android.widget.EditText;
-import android.widget.ImageView;
 import android.widget.LinearLayout;
 import android.widget.TextView;
+
+import java.io.File;
+import java.io.FileOutputStream;
+import java.io.IOException;
+import java.io.ObjectOutputStream;
 
 public class ProblemActivity2 extends Activity implements OnClickListener 
 {
