@@ -6,6 +6,20 @@ import java.util.List;
 
 import android.util.Log;
 
+/**
+ * ProblemHelper helps display a math problem to the screen. 
+ * It assumes that all problems follow the same format: X + Y = Z
+ * Where X,Y,Z are integers with the following conditions:
+ * 0 < X <= 99  
+ * 0 < Y <= 99
+ * 0 < Z <= 198
+ * 
+ * All Numbers have a image that represents that ranging from 0 to 10.
+ * I also have the following operands : + AND =
+ * 
+ * @author barakis
+ *
+ */
 public class ProblemHelper 
 {
 	private List<Integer> display;
