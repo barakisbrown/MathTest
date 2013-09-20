@@ -8,6 +8,7 @@ import android.text.InputType;
 import android.util.Log;
 import android.view.View;
 import android.view.View.OnClickListener;
+import android.view.ViewGroup;
 import android.view.ViewGroup.LayoutParams;
 import android.widget.Button;
 import android.widget.EditText;
@@ -60,8 +61,8 @@ public class ProblemActivity2 extends Activity implements OnClickListener
 			e.printStackTrace();
 		}
 		problemLabelString = getResources().getString(R.string.ProblemLabel);
-		helper = new ProblemBuilder(this);
 		// Init GUI Controls
+		helper = new ProblemBuilder(this);
 		// Setup Width/Height
 		dynLayout = (LinearLayout)findViewById(R.id.problemLayout);
 		dynLayout.setLayoutParams(new LinearLayout.LayoutParams(LayoutParams.WRAP_CONTENT,LayoutParams.WRAP_CONTENT));
@@ -84,13 +85,8 @@ public class ProblemActivity2 extends Activity implements OnClickListener
 		// Lets display the problem number
 		displayString = String.format(problemLabelString, numProblem + 1,maxProblem);
 		problemNumberTxt.setText(displayString);
-		// begin displaying problem
-		TextView blank = new TextView(this);
-		blank.setText("          ");
-		// begin adding controls
-		dynLayout.addView(blank);
-		// Modification here with my new class
-		dynLayout.addView(helper.buildProblem());
+		// Section needs work is here
+		dynLayout = helper.buildProblem(dynLayout);
 		// display GuessBox
 		guessBox = new EditText(this);
 		guessBox.setInputType(InputType.TYPE_CLASS_NUMBER);
