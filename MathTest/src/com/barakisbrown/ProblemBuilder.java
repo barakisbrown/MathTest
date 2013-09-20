@@ -51,6 +51,7 @@ public class ProblemBuilder extends ProblemHelper
     */
     public View buildProblem()
     {
+        
         LinearLayout rtnView = new LinearLayout(ctx);
         rtnView.setOrientation(LinearLayout.HORIZONTAL);
         rtnView.setLayoutParams(new GridLayout.LayoutParams());
@@ -132,6 +133,45 @@ public class ProblemBuilder extends ProblemHelper
         }
         
         return rtnView;
+   }
+   
+   public LinearLayout buildProblem(LinearLayout dynLayout)
+   {
+       // Build LeftSide
+       Iterator<Integer> itor = buildLeftSide();
+       ImageView iv;
+       // loop through of iterator
+       while(itor.hasNext())
+       {
+           iv = new ImageView(ctx);
+           iv.setScaleType(ImageView.ScaleType.FIT_CENTER);
+           iv.setImageResource(itor.next());
+           itor.remove();
+           dynLayout.addView(iv);
+       }
+       // Space
+       dynLayout.addView(space);
+       // Operator
+       dynLayout.addView(plusSign);
+       // Build LeftSide
+       itor = buildRightSide();
+       // another loop
+       while(itor.hasNext())
+       {
+           iv = new ImageView(ctx);
+           iv.setScaleType(ImageView.ScaleType.FIT_CENTER);
+           iv.setImageResource(itor.next());
+           itor.remove();
+           dynLayout.addView(iv);
+       }
+       // Space
+       dynLayout.addView(space);
+       // Equal Sign
+       dynLayout.addView(equalSign);
+       // Space
+       dynLayout.addView(space);
+       // return the view
+       return dynLayout;
    }
 
 }
