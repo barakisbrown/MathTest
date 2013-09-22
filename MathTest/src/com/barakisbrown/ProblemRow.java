@@ -24,11 +24,11 @@ public class ProblemRow
         mContext = ctx;
         builder = new ProblemBuilder(mContext,problem);
         
-        probNumber = (LinearLayout)builder.buildItem(problemNumber);
+        probNumber = (LinearLayout)builder.buildNumberImage(problemNumber);
         probItself = (LinearLayout)builder.buildProblem();
         probComplete = (LinearLayout)builder.buildCompleteProblem();
-        probAnswer = (LinearLayout)builder.buildItem(prob.getTotal());
-        probGuess  = (LinearLayout)builder.buildItem(prob.getGuess());
+        probAnswer = (LinearLayout)builder.buildNumberImage(prob.getTotal());
+        probGuess  = (LinearLayout)builder.buildNumberImage(prob.getGuess());
         
     }
 

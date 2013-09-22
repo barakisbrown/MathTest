@@ -1,19 +1,19 @@
 package com.barakisbrown;
 
+import java.util.Iterator;
+
 import android.content.Context;
 import android.view.View;
 import android.widget.GridLayout;
 import android.widget.ImageView;
 import android.widget.LinearLayout;
-import android.widget.TextView;
-
-import java.util.Iterator;
+import android.widget.Space;
 
 public class ProblemBuilder extends ProblemHelper 
 {
     private ImageView plusSign;
     private ImageView equalSign;
-    private TextView space;
+    private Space space;
     private Context ctx;
     
     
@@ -30,10 +30,8 @@ public class ProblemBuilder extends ProblemHelper
         equalSign = new ImageView(ctx);
         equalSign.setScaleType(ImageView.ScaleType.FIT_CENTER);
         equalSign.setImageResource(R.drawable.equalsign);
-        // Space
-        space = new TextView(ctx);
-        space.setText(" ");
-        
+        // space widget
+        space = new Space(ctx);
     }
     
     
@@ -102,7 +100,7 @@ public class ProblemBuilder extends ProblemHelper
    {
        int total = this.LeftSide + this.RightSide;
        LinearLayout rtnView = (LinearLayout)buildProblem();
-       rtnView.addView(buildItem(total));
+       rtnView.addView(buildNumberImage(total));
        return rtnView;
        
    }
@@ -113,7 +111,7 @@ public class ProblemBuilder extends ProblemHelper
     * @param Item integer that needs to be converted into an image
     * @return View
     */
-   public View buildItem(int item)
+   public LinearLayout buildNumberImage(int item)
    {
         LinearLayout rtnView = new LinearLayout(ctx);
         rtnView.setOrientation(LinearLayout.HORIZONTAL);
@@ -135,35 +133,26 @@ public class ProblemBuilder extends ProblemHelper
         return rtnView;
    }
    
+   
    public LinearLayout buildProblem(LinearLayout dynLayout)
    {
-       // Build LeftSide
-       Iterator<Integer> itor = buildLeftSide();
-       ImageView iv;
-       // loop through of iterator
-       while(itor.hasNext())
-       {
-           iv = new ImageView(ctx);
-           iv.setScaleType(ImageView.ScaleType.FIT_CENTER);
-           iv.setImageResource(itor.next());
-           itor.remove();
-           dynLayout.addView(iv);
-       }
+       // Build Images for the LeftSide and RightSide of the operator
+      
+       // assign them
+       LinearLayout Left  = buildNumberImage(LeftSide);
+       LinearLayout Right = buildNumberImage(RightSide); 
+       // Add Space at Start
+       dynLayout.addView(space);
+       // Add LeftSide
+       dynLayout.addView(Left);
        // Space
        dynLayout.addView(space);
        // Operator
        dynLayout.addView(plusSign);
-       // Build LeftSide
-       itor = buildRightSide();
-       // another loop
-       while(itor.hasNext())
-       {
-           iv = new ImageView(ctx);
-           iv.setScaleType(ImageView.ScaleType.FIT_CENTER);
-           iv.setImageResource(itor.next());
-           itor.remove();
-           dynLayout.addView(iv);
-       }
+       // Space
+       dynLayout.addView(space);
+       // Build RightSide
+       dynLayout.addView(Right);
        // Space
        dynLayout.addView(space);
        // Equal Sign
