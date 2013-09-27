@@ -87,14 +87,7 @@ public class Quiz
 
 	// I could do some type checking below in this set of getters. Might look into it later.
 	public int getQuizNumber()     { return quizUsedCount; }
-	public int getFirst(int index) 
-	{
-		// BEGIN DEBUG
-		Log.d("Quiz getFirst()","Index = " + index);
-		Log.d("Quiz getFirst()","MAXPROBLEMS = " + MAXPROBLEMS);
-		// END DEBUG
-		return Problems[index].getLeftSide(); 
-	}
+	public int getFirst(int index) { return Problems[index].getLeftSide(); }
 	public int getSecond(int index) { return Problems[index].getRightSide(); }
 	public int getAnswer(int index) { return Problems[index].getTotal(); }
 	public int getNumProblems()     { return MAXPROBLEMS; }
@@ -145,17 +138,16 @@ public class Quiz
 	
 	/**
 	 * Loads Problems and Answers Array so that it can be used.
-	 * Note : This function needs to be called after initQuiz 
+	 * Note : This function needs to be called after initQuiz because if called before it will return an exception
 	 * @throws Exception 
 	 */
 	public void LoadQuiz() throws Exception
 	{
 		if (rnd == null)
 		{
-			// Need to either return an exception stating that Quiz has not be initialized yet
 			throw new Exception("Quiz needs to be initialized first. Make sure you have called Quiz.Init(numProblems) First!");
 		}
-		// since rnd variable exists then I will need to create the loop that makes the quiz
+		// since rnd exists then I will need to create the loop that makes the quiz
 		for (int X = 0;X < MAXPROBLEMS; X++)
 		{
 			int first = rnd.nextInt(MAXNUMBERUSED);
@@ -163,6 +155,7 @@ public class Quiz
 			int total = first + second;
 			Problems[X] = new ProblemBase(first,second,total);
 		}
+		// Debug Function to list all the problems int this quiz
 		listProblems();
 		quizUsedCount++;
 	}
@@ -175,6 +168,10 @@ public class Quiz
 		return Problems;
 	}
 	
+	/**
+	 * Function that the score board class will use to display the problem that the user missed to the screen.
+	 * @return An array of ProblemBase which are the problems
+	 */
 	ProblemBase[] getIncorrectProblems()
 	{
 		int idx = 0;
@@ -190,6 +187,10 @@ public class Quiz
 		return Incorrect;
 	}
 	
+	/**
+	 * DEBUG FUNCTION ONLY
+	 * It will display all the problems to a log file just in case I need to view them
+	 */
 	private void listProblems()
 	{
 		int lside = 0,rside = 0,tot = 0;
