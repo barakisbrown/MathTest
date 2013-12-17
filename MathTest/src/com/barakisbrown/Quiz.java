@@ -194,4 +194,13 @@ public class Quiz
 		}
 		quizUsedCount++;
 	}
+	
+	/***
+	 * Test Function for Git Purposes
+	 */
+	public void TestFun()
+	{
+		System.out.println("Hello World");
+		
+	}
 }
