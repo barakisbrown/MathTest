@@ -43,51 +43,53 @@
                 android:id="@+id/answer"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="?"
+                android:text="#"
                 android:textAppearance="?android:attr/textAppearanceLarge" />            
         </TableRow>        
     </TableLayout>
     
-    <RelativeLayout 
+    <RelativeLayout
         android:layout_width="match_parent"
         android:layout_height="0dip"
-        android:layout_weight="80">
+        android:layout_weight="80" >
 
-        <ImageView
-            android:id="@+id/bubble1"
-            android:layout_width="50dip"
-            android:layout_height="50dip"
-            android:layout_alignParentLeft="true"
-            android:layout_alignParentTop="true"
-            android:layout_marginLeft="124dp"
-            android:layout_marginTop="144dp"
-            android:src="@drawable/number_one" />
+       
+
+            <ImageView
+                android:id="@+id/bubble1"
+                android:layout_width="50dip"
+                android:layout_height="50dip"
+                android:layout_alignParentLeft="true"
+                android:layout_alignParentTop="true"
+                android:layout_marginLeft="24dp"
+                android:layout_marginTop="44dp"
+                android:src="@drawable/number_one" />
+       
 
         <ImageView
             android:id="@+id/ImageView01"
             android:layout_width="50dip"
             android:layout_height="50dip"
-            android:layout_alignRight="@+id/bubble1"
-            android:layout_alignTop="@+id/bubble1"
-            android:layout_marginRight="36dp"
-            android:src="@drawable/number_two" />
-
-        <ImageView
-            android:id="@+id/ImageView03"
-            android:layout_width="50dip"
-            android:layout_height="50dip"
-            android:layout_above="@+id/ImageView01"
-            android:layout_alignLeft="@+id/bubble1"
+            android:layout_alignTop="@+id/relativeLayout1"
+            android:layout_toRightOf="@+id/relativeLayout1"
             android:src="@drawable/number_two" />
 
         <ImageView
             android:id="@+id/ImageView02"
             android:layout_width="50dip"
             android:layout_height="50dip"
-            android:layout_alignLeft="@+id/ImageView01"
-            android:layout_centerVertical="true"
+            android:layout_alignTop="@+id/bubble1"
+            android:layout_toRightOf="@+id/bubble1"
+            android:src="@drawable/number_two" />
+
+        <ImageView
+            android:id="@+id/ImageView03"
+            android:layout_width="50dip"
+            android:layout_height="50dip"
+            android:layout_below="@+id/bubble1"
+            android:layout_toLeftOf="@+id/ImageView02"
             android:src="@drawable/number_one" />
-        
+
     </RelativeLayout>
 
 </LinearLayout>
